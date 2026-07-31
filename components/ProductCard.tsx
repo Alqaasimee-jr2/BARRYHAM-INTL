@@ -4,13 +4,14 @@ import React, { useState } from "react";
 import { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { ShoppingCart, Check } from "lucide-react";
+import Image from "next/image";
 
 export function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
 
   const handleAdd = () => {
-    addItem({ id: product.id, name: product.name, price: product.price, qty: 1 });
+    addItem({ id: product.id, name: product.name, price: product.price, qty: 1, image: product.image });
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };
@@ -23,11 +24,20 @@ export function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="bg-white rounded-xl shadow-sm hover:shadow-md border border-navy/5 overflow-hidden flex flex-col group transition-all">
-      <div className="relative w-full aspect-square bg-offwhite flex items-center justify-center p-8">
-        {/* Placeholder styling instead of real image since we don't have them yet */}
-        <div className="absolute inset-0 bg-navy/5 flex items-center justify-center text-navy/20 font-heading text-xl">
-          {product.category.toUpperCase()}
-        </div>
+      <div className="relative w-full aspect-square bg-offwhite flex items-center justify-center overflow-hidden">
+        {product.image ? (
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            unoptimized
+          />
+        ) : (
+          <div className="absolute inset-0 bg-navy/5 flex items-center justify-center text-navy/20 font-heading text-xl">
+            {product.category.toUpperCase()}
+          </div>
+        )}
       </div>
       
       <div className="p-6 flex flex-col flex-grow">

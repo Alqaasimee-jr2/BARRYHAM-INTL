@@ -5,6 +5,7 @@ import { useCart } from "@/context/CartContext";
 import { X, Plus, Minus, ShoppingCart } from "lucide-react";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -83,8 +84,18 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
               ) : (
                 items.map((item) => (
                   <div key={item.id} className="flex gap-4 items-start border-b border-navy/5 pb-4 last:border-0">
-                    <div className="w-20 h-20 bg-navy/5 rounded-lg flex items-center justify-center text-xs text-navy/30 shrink-0">
-                      IMG
+                    <div className="w-20 h-20 bg-navy/5 rounded-lg flex items-center justify-center text-xs text-navy/30 shrink-0 overflow-hidden relative border border-navy/5">
+                      {item.image ? (
+                        <Image
+                          src={item.image}
+                          alt={item.name}
+                          fill
+                          className="object-cover"
+                          unoptimized
+                        />
+                      ) : (
+                        "IMG"
+                      )}
                     </div>
                     <div className="flex-grow">
                       <h4 className="font-heading font-semibold text-navy line-clamp-2 leading-tight mb-1">

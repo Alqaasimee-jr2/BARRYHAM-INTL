@@ -427,15 +427,25 @@ export default function HomePage() {
             >
               {/* Image area */}
               <div className="relative w-full aspect-[4/5] bg-offwhite rounded-2xl overflow-hidden mb-5 shadow-sm border border-navy/5 group-hover:border-gold/30 group-hover:shadow-md transition-all duration-300">
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6">
-                  <div className="w-16 h-16 rounded-full bg-navy/5 flex items-center justify-center">
-                    <div className="w-8 h-8 rounded-full bg-navy/10" />
+                {product.image ? (
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                    unoptimized
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6">
+                    <div className="w-16 h-16 rounded-full bg-navy/5 flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-full bg-navy/10" />
+                    </div>
+                    <p className="font-ui text-[10px] font-semibold tracking-[0.2em] uppercase text-navy/30">
+                      {product.brand}
+                    </p>
                   </div>
-                  <p className="font-ui text-[10px] font-semibold tracking-[0.2em] uppercase text-navy/30">
-                    {product.brand}
-                  </p>
-                </div>
-                <div className="absolute top-4 right-4">
+                )}
+                <div className="absolute top-4 right-4 z-10">
                   <span className="font-ui text-[10px] font-semibold tracking-wider uppercase bg-white border border-navy/10 text-navy/60 px-2 py-1 rounded-full">
                     {product.category === "sanitary"
                       ? "Sanitary"
