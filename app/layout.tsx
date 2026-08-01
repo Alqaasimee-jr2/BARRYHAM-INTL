@@ -5,6 +5,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { CartProvider } from "@/context/CartContext";
 import { FloatingCart } from "@/components/FloatingCart";
+import { Analytics } from "@vercel/analytics/next";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -111,6 +112,7 @@ export default function RootLayout({
           <Footer />
           <FloatingCart />
         </CartProvider>
+        <Analytics />
       </body>
     </html>
   );
