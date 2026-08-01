@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useInView, Variants } from "framer-motion";
+import React from "react";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -11,11 +11,6 @@ import { testimonials } from "@/data/testimonials";
 import { BrandLogos } from "@/components/BrandLogos";
 
 // ─── Animation Variants ────────────────────────────────────────────────────────
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] } },
-};
 
 const fadeUpStagger: Variants = {
   hidden: {},
