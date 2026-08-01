@@ -15,7 +15,7 @@ const CATEGORIES: { id: "All" | ProductCategory; label: string }[] = [
   { id: "plumbing", label: "Plumbing Fittings" },
 ];
 
-export default function ProductsPage() {
+function ProductsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   
@@ -53,33 +53,7 @@ export default function ProductsPage() {
   }, [activeCategory, searchQuery]);
 
   return (
-    <main className="flex min-h-screen flex-col bg-offwhite pt-24 pb-32">
-      {/* Header */}
-      <section className="py-16 px-6 lg:px-12 bg-navy text-white text-center">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl mb-6">
-            Product Catalog
-          </h1>
-          <p className="font-ui text-lg text-offwhite/90 leading-relaxed max-w-2xl mx-auto">
-            Explore our curated selection of high-quality building materials designed for your projects. From premium sanitary wares to industrial-grade cables, find exactly what you need and build your custom quote with us today.
-          </p>
-          
-          <div className="mt-8 flex justify-center">
-            <a 
-              href="#" 
-              onClick={(e) => {
-                e.preventDefault();
-                alert("Catalog PDF will be available soon. Please check back later!");
-              }}
-              className="inline-flex items-center gap-2 bg-gold hover:bg-gold/90 text-white font-ui font-semibold py-3 px-6 rounded-full transition-colors shadow-md"
-            >
-              <Download size={20} />
-              Download Full Catalog
-            </a>
-          </div>
-        </div>
-      </section>
-
+    <>
       {/* Sticky Filters & Search */}
       <div className="sticky top-20 z-30 bg-offwhite/90 backdrop-blur-md border-b border-navy/5 shadow-sm py-4">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row gap-6 items-center justify-between">
@@ -144,6 +118,42 @@ export default function ProductsPage() {
           </div>
         )}
       </section>
+    </>
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <main className="flex min-h-screen flex-col bg-offwhite pt-24 pb-32">
+      {/* Header */}
+      <section className="py-16 px-6 lg:px-12 bg-navy text-white text-center">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl mb-6">
+            Product Catalog
+          </h1>
+          <p className="font-ui text-lg text-offwhite/90 leading-relaxed max-w-2xl mx-auto">
+            Explore our curated selection of high-quality building materials designed for your projects. From premium sanitary wares to industrial-grade cables, find exactly what you need and build your custom quote with us today.
+          </p>
+          
+          <div className="mt-8 flex justify-center">
+            <a 
+              href="#" 
+              onClick={(e) => {
+                e.preventDefault();
+                alert("Catalog PDF will be available soon. Please check back later!");
+              }}
+              className="inline-flex items-center gap-2 bg-gold hover:bg-gold/90 text-white font-ui font-semibold py-3 px-6 rounded-full transition-colors shadow-md"
+            >
+              <Download size={20} />
+              Download Full Catalog
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <React.Suspense fallback={<div className="flex justify-center items-center py-20"><div className="animate-pulse w-8 h-8 rounded-full bg-navy/20"></div></div>}>
+        <ProductsContent />
+      </React.Suspense>
 
       {/* Floating Cart & Drawer */}
       <FloatingCart />
