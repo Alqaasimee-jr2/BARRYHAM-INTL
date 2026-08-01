@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Search, Download } from "lucide-react";
 import { products, ProductCategory } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import { FloatingCart } from "@/components/FloatingCart";
@@ -14,11 +16,41 @@ const CATEGORIES: { id: "All" | ProductCategory; label: string }[] = [
 ];
 
 export default function ProductsPage() {
-  const [activeCategory, setActiveCategory] = useState<"All" | ProductCategory>("All");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  
+  const initialCategory = (searchParams.get("category") as "All" | ProductCategory) || "All";
+  const [activeCategory, setActiveCategory] = useState<"All" | ProductCategory>(initialCategory);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredProducts = products.filter(
-    (p) => activeCategory === "All" || p.category === activeCategory
-  );
+  // Sync state when URL changes externally (e.g., via Nav links)
+  useEffect(() => {
+    const cat = searchParams.get("category") as "All" | ProductCategory;
+    if (cat) {
+      setActiveCategory(cat);
+    } else {
+      setActiveCategory("All");
+    }
+  }, [searchParams]);
+
+  const handleCategoryChange = (catId: "All" | ProductCategory) => {
+    setActiveCategory(catId);
+    if (catId === "All") {
+      router.push("/products");
+    } else {
+      router.push(`/products?category=${catId}`);
+    }
+  };
+
+  const filteredProducts = useMemo(() => {
+    return products.filter((p) => {
+      const matchesCategory = activeCategory === "All" || p.category === activeCategory;
+      const matchesSearch = 
+        p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        p.brand.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [activeCategory, searchQuery]);
 
   return (
     <main className="flex min-h-screen flex-col bg-offwhite pt-24 pb-32">
@@ -31,20 +63,35 @@ export default function ProductsPage() {
           <p className="font-ui text-lg text-offwhite/90 leading-relaxed max-w-2xl mx-auto">
             Explore our curated selection of high-quality building materials designed for your projects. From premium sanitary wares to industrial-grade cables, find exactly what you need and build your custom quote with us today.
           </p>
+          
+          <div className="mt-8 flex justify-center">
+            <a 
+              href="#" 
+              onClick={(e) => {
+                e.preventDefault();
+                alert("Catalog PDF will be available soon. Please check back later!");
+              }}
+              className="inline-flex items-center gap-2 bg-gold hover:bg-gold/90 text-white font-ui font-semibold py-3 px-6 rounded-full transition-colors shadow-md"
+            >
+              <Download size={20} />
+              Download Full Catalog
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* Sticky Filters */}
-      <div className="sticky top-20 z-30 bg-offwhite/90 backdrop-blur-md border-b border-navy/5 shadow-sm">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-          <div className="flex overflow-x-auto hide-scrollbar gap-4 py-4 justify-start md:justify-center">
+      {/* Sticky Filters & Search */}
+      <div className="sticky top-20 z-30 bg-offwhite/90 backdrop-blur-md border-b border-navy/5 shadow-sm py-4">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row gap-6 items-center justify-between">
+          
+          <div className="flex overflow-x-auto hide-scrollbar gap-3 w-full md:w-auto pb-2 md:pb-0">
             {CATEGORIES.map((category) => (
               <button
                 key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`whitespace-nowrap px-6 py-2.5 rounded-full font-ui text-sm font-medium transition-all duration-300 min-h-[44px] ${
+                onClick={() => handleCategoryChange(category.id)}
+                className={`whitespace-nowrap px-5 py-2 rounded-full font-ui text-sm font-medium transition-all duration-300 min-h-[40px] ${
                   activeCategory === category.id
-                    ? "bg-gold text-white shadow-md"
+                    ? "bg-navy text-white shadow-md"
                     : "bg-white text-charcoal border border-navy/10 hover:border-gold hover:text-gold"
                 }`}
               >
@@ -52,6 +99,20 @@ export default function ProductsPage() {
               </button>
             ))}
           </div>
+
+          <div className="relative w-full md:w-72">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Search size={18} className="text-charcoal/40" />
+            </div>
+            <input
+              type="text"
+              placeholder="Search products or brands..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="block w-full pl-10 pr-3 py-2 border border-navy/10 rounded-full leading-5 bg-white placeholder-charcoal/40 focus:outline-none focus:ring-1 focus:ring-gold focus:border-gold font-ui text-sm transition-all"
+            />
+          </div>
+
         </div>
       </div>
 
@@ -79,7 +140,7 @@ export default function ProductsPage() {
 
         {filteredProducts.length === 0 && (
           <div className="text-center py-24 text-charcoal/50">
-            <p className="font-ui text-lg">No products found for this category.</p>
+            <p className="font-ui text-lg">No products found matching your criteria.</p>
           </div>
         )}
       </section>

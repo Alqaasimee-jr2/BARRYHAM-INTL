@@ -5,6 +5,7 @@ import { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { ShoppingCart, Check } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart();
@@ -22,9 +23,34 @@ export function ProductCard({ product }: { product: Product }) {
     maximumFractionDigits: 0,
   }).format(product.price);
 
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    image: product.image ? `https://barryham.site${product.image}` : undefined,
+    description: product.description,
+    sku: product.id,
+    brand: {
+      "@type": "Brand",
+      name: product.brand
+    },
+    offers: {
+      "@type": "Offer",
+      url: `https://barryham.site/products`,
+      priceCurrency: "NGN",
+      price: product.price,
+      availability: "https://schema.org/InStock"
+    }
+  };
+
   return (
     <div className="bg-white rounded-xl shadow-sm hover:shadow-md border border-navy/5 overflow-hidden flex flex-col group transition-all">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
       <div className="relative w-full aspect-square bg-offwhite flex items-center justify-center overflow-hidden">
+        <Link href={`/products/${product.id}`} className="absolute inset-0 z-10" aria-label={`View ${product.name}`} />
         {product.image ? (
           <Image
             src={product.image}
@@ -44,9 +70,11 @@ export function ProductCard({ product }: { product: Product }) {
         <span className="font-ui text-xs font-bold text-gold uppercase tracking-wider mb-2">
           {product.brand}
         </span>
-        <h3 className="font-heading font-semibold text-lg text-navy mb-2 line-clamp-2">
-          {product.name}
-        </h3>
+        <Link href={`/products/${product.id}`} className="hover:text-gold transition-colors group-hover:text-gold">
+          <h3 className="font-heading font-semibold text-lg text-navy mb-2 line-clamp-2 transition-colors">
+            {product.name}
+          </h3>
+        </Link>
         
         {product.description && (
           <p className="font-ui text-sm text-charcoal/70 mb-4 line-clamp-2 flex-grow">
@@ -60,9 +88,9 @@ export function ProductCard({ product }: { product: Product }) {
           </span>
           
           <button
-            onClick={handleAdd}
+            onClick={(e) => { e.preventDefault(); handleAdd(); }}
             disabled={added}
-            className={`min-h-[44px] min-w-[44px] rounded-full flex items-center justify-center transition-all duration-300 ${
+            className={`relative z-20 min-h-[44px] min-w-[44px] rounded-full flex items-center justify-center transition-all duration-300 ${
               added 
                 ? "bg-gold text-white border border-gold" 
                 : "bg-transparent text-gold border border-gold hover:bg-gold/10"

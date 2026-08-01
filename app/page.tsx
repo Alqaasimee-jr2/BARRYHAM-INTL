@@ -126,6 +126,23 @@ export default function HomePage() {
     <main className="flex min-h-screen flex-col bg-offwhite overflow-x-hidden">
 
       {/* ── HERO ── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "@id": "https://barryham.site/#business",
+            "name": "Barryham Int'l Ltd",
+            "review": testimonials.map(t => ({
+              "@type": "Review",
+              "author": { "@type": "Person", "name": t.name },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": t.quote
+            }))
+          })
+        }}
+      />
       <header className="relative w-full min-h-screen flex flex-col lg:flex-row pt-20 overflow-hidden bg-offwhite">
         {/* Left: Copy */}
         <motion.div
@@ -155,22 +172,20 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+            <button
+              onClick={handleWhatsApp}
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-navy text-white font-ui font-medium text-sm tracking-wide rounded-full hover:bg-gold transition-colors duration-300 min-h-[52px] w-full sm:w-auto"
+            >
+              Start a Conversation
+              <ArrowRight size={16} />
+            </button>
             <Link
               href="/products"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-navy text-white font-ui font-medium text-sm tracking-wide rounded-full hover:bg-gold transition-colors duration-300 min-h-[52px]"
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 border border-navy/30 text-navy hover:border-gold hover:text-gold font-ui font-medium text-sm tracking-wide rounded-full transition-colors duration-300 min-h-[52px] w-full sm:w-auto"
             >
               Browse Products
               <ArrowRight size={16} />
             </Link>
-            <button
-              onClick={handleWhatsApp}
-              className="font-ui text-sm font-medium text-navy hover:text-gold transition-colors flex items-center gap-2 group min-h-[52px]"
-            >
-              <span className="border-b border-navy/40 group-hover:border-gold pb-0.5 transition-colors">
-                Start a Conversation
-              </span>
-              <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
-            </button>
           </div>
 
           {/* Scroll indicator */}
@@ -200,10 +215,14 @@ export default function HomePage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-navy/30 via-transparent to-transparent" />
             {/* Gold corner accent */}
-            <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+            <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end gap-2 justify-between">
               <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 py-3">
-                <p className="font-ui text-[10px] font-semibold tracking-[0.2em] uppercase text-white/70 mb-1">Est. Supply Quality</p>
-                <p className="font-heading text-white text-lg font-semibold">European Grade</p>
+                <p className="font-ui text-[10px] font-semibold tracking-[0.2em] uppercase text-white/70 mb-1">Years in Business</p>
+                <p className="font-heading text-white text-lg font-semibold">8+</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 py-3 hidden sm:block">
+                <p className="font-ui text-[10px] font-semibold tracking-[0.2em] uppercase text-white/70 mb-1">SKUs Stocked</p>
+                <p className="font-heading text-white text-lg font-semibold">130+</p>
               </div>
               <div className="bg-gold/90 backdrop-blur-md rounded-xl px-4 py-3">
                 <p className="font-ui text-[10px] font-semibold tracking-[0.2em] uppercase text-white/80 mb-1">Projects Completed</p>
@@ -527,6 +546,15 @@ export default function HomePage() {
                   <p className="font-ui text-xs text-charcoal/50 mt-1">{t.role}</p>
                   {t.project && (
                     <p className="font-ui text-xs text-gold/70 mt-0.5">{t.project}</p>
+                  )}
+                  {t.project && t.project.includes("Centrion") && (
+                    <Link href="/products?category=plumbing" className="inline-block mt-3 px-2 py-1 bg-navy/5 text-navy/70 text-[10px] font-semibold uppercase tracking-wider rounded hover:bg-navy/10 transition-colors">Plumbing & Tiling</Link>
+                  )}
+                  {t.project && t.project.includes("LASU") && (
+                    <Link href="/products?category=sanitary" className="inline-block mt-3 px-2 py-1 bg-navy/5 text-navy/70 text-[10px] font-semibold uppercase tracking-wider rounded hover:bg-navy/10 transition-colors">Sanitary Ware</Link>
+                  )}
+                  {t.project && t.project.includes("Multi Agency") && (
+                    <Link href="/products?category=electricals" className="inline-block mt-3 px-2 py-1 bg-navy/5 text-navy/70 text-[10px] font-semibold uppercase tracking-wider rounded hover:bg-navy/10 transition-colors">Electricals</Link>
                   )}
                 </div>
               </motion.div>
