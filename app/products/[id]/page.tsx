@@ -2,10 +2,10 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { products } from "@/data/products";
-import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { ProductCard } from "@/components/ProductCard";
+import { ProductDetailActions } from "@/components/ProductDetailActions";
 import type { Metadata } from "next";
 
 export async function generateStaticParams() {
@@ -32,19 +32,16 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
     notFound();
   }
 
-  const formattedPrice = new Intl.NumberFormat("en-NG", {
-    style: "currency",
-    currency: "NGN",
-    maximumFractionDigits: 0,
-  }).format(product.price);
-
   // Get related products (same category, excluding this one)
   const relatedProducts = products
     .filter((p) => p.category === product.category && p.id !== product.id)
     .slice(0, 4);
 
-  const whatsappMessage = `Hello Barryham, I would like to request a quote for the following product:\n\n*${product.name}*\nBrand: ${product.brand}\nSKU: ${product.id}\nLink: https://barryham.site/products/${product.id}`;
-  const whatsappUrl = buildWhatsAppLink("2348034750270", [], "product", whatsappMessage);
+  const formattedPrice = new Intl.NumberFormat("en-NG", {
+    style: "currency",
+    currency: "NGN",
+    maximumFractionDigits: 0,
+  }).format(product.price);
 
   return (
     <main className="flex flex-col min-h-screen bg-offwhite pt-24 pb-32">
@@ -123,15 +120,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
               </ul>
             </div>
 
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-navy text-white font-ui font-semibold text-sm tracking-wide rounded-full hover:bg-gold transition-colors duration-300 w-full sm:w-auto text-center"
-            >
-              Request Quote via WhatsApp
-              <ArrowRight size={16} />
-            </a>
+            <ProductDetailActions product={product} formattedPrice={formattedPrice} />
           </div>
         </div>
       </section>

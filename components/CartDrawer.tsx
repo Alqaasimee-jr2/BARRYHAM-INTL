@@ -34,8 +34,8 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
   }).format(total);
 
   const handleCheckout = () => {
-    // Call our util from Day 1 with the phone number, items, and context
-    const link = buildWhatsAppLink("2348034750270", items, "product");
+    const checkoutItems = items.map(item => ({ name: item.name, qty: item.qty, sku: item.id }));
+    const link = buildWhatsAppLink("2348034750270", checkoutItems, "product");
     window.open(link, "_blank");
   };
 

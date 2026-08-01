@@ -4,6 +4,7 @@ import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { CartProvider } from "@/context/CartContext";
+import { FloatingCart } from "@/components/FloatingCart";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -103,6 +104,7 @@ export default function RootLayout({
             {children}
           </div>
           <Footer />
+          <FloatingCart />
         </CartProvider>
       </body>
     </html>

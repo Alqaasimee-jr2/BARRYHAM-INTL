@@ -6,7 +6,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Search, Download } from "lucide-react";
 import { products, ProductCategory } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
-import { FloatingCart } from "@/components/FloatingCart";
 
 const CATEGORIES: { id: "All" | ProductCategory; label: string }[] = [
   { id: "All", label: "All Products" },
@@ -123,6 +122,14 @@ function ProductsContent() {
 }
 
 export default function ProductsPage() {
+  return (
+    <React.Suspense fallback={<div className="flex justify-center items-center h-screen"><div className="animate-pulse w-8 h-8 rounded-full bg-navy/20"></div></div>}>
+      <ProductsPageContent />
+    </React.Suspense>
+  );
+}
+
+function ProductsPageContent() {
   return (
     <main className="flex min-h-screen flex-col bg-offwhite pt-24 pb-32">
       {/* Header */}
