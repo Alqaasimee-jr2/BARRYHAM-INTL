@@ -37,6 +37,11 @@ export const metadata: Metadata = {
     title: "Barryham Int'l Ltd | Premium Fittings & Sanitary Ware",
     description: "BIL supplies and installs genuine sanitary ware, electricals, and interior finishes across Lagos, Agege, Igando, and all of Nigeria.",
   },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   robots: {
     index: true,
     follow: true,
