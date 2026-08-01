@@ -5,6 +5,7 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import { StatCounter } from "@/components/StatCounter";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projects, ProjectSector } from "@/data/projects";
+import { BrandLogos } from "@/components/BrandLogos";
 
 // Fade up animation variants
 const fadeInUp: Variants = {
@@ -102,6 +103,9 @@ export default function AboutPage() {
           <StatCounter endValue={uniqueStates} label="States" />
         </div>
       </section>
+
+      {/* 4.5 Official Partner Brand Logos */}
+      <BrandLogos />
 
       {/* 5. Past Projects */}
       <section className="py-24 px-6 lg:px-12 max-w-[1440px] mx-auto w-full">

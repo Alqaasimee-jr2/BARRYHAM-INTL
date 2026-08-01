@@ -8,6 +8,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { products } from "@/data/products";
 import { testimonials } from "@/data/testimonials";
+import { BrandLogos } from "@/components/BrandLogos";
 
 // ─── Animation Variants ────────────────────────────────────────────────────────
 
@@ -51,15 +52,7 @@ const INSTITUTIONS = [
   { name: "West African College of Surgeons", size: "text-2xl md:text-3xl", opacity: "opacity-65" },
 ];
 
-const PRODUCT_BRANDS = [
-  { name: "Grohe", style: "font-heading italic text-4xl md:text-5xl opacity-90" },
-  { name: "Ideal Standard", style: "font-ui font-light tracking-wider text-xl md:text-2xl opacity-60" },
-  { name: "Villeroy & Boch", style: "font-heading text-2xl md:text-3xl opacity-75" },
-  { name: "Varmora", style: "font-ui font-semibold uppercase tracking-[0.15em] text-sm opacity-50" },
-  { name: "Armitage Shanks", style: "font-heading italic text-3xl md:text-4xl opacity-80" },
-  { name: "Twyford", style: "font-ui font-light text-2xl md:text-3xl opacity-65" },
-  { name: "Vado", style: "font-heading text-5xl md:text-6xl opacity-55" },
-];
+
 
 const SERVICES = [
   {
@@ -86,33 +79,6 @@ const SERVICES = [
 
 function formatPrice(n: number) {
   return `₦${n.toLocaleString("en-NG")}`;
-}
-
-// ─── Section wrapper with scroll trigger ───────────────────────────────────────
-
-function Section({
-  children,
-  className = "",
-  id,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  id?: string;
-}) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  return (
-    <motion.section
-      id={id}
-      ref={ref}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={fadeUp}
-      className={className}
-    >
-      {children}
-    </motion.section>
-  );
 }
 
 // ─── Main Page ─────────────────────────────────────────────────────────────────
@@ -267,35 +233,8 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* ── BRAND CLUSTER — Product Partners ── */}
-      <Section className="py-24 lg:py-28 px-6 lg:px-20 bg-white border-b border-navy/5">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center gap-16">
-          {/* Label column */}
-          <div className="shrink-0 lg:w-1/4">
-            <p className="font-ui text-[10px] font-semibold tracking-[0.25em] uppercase text-charcoal/50 mb-3">
-              Curated Partners
-            </p>
-            <h2 className="font-heading text-navy text-2xl font-semibold leading-snug">
-              Global Standards,<br />Local Excellence.
-            </h2>
-            <div className="w-8 h-px bg-gold mt-6" />
-          </div>
-
-          {/* Brand constellation */}
-          <div className="w-full lg:w-3/4">
-            <div className="flex flex-wrap gap-x-8 gap-y-3 items-baseline">
-              {PRODUCT_BRANDS.map((brand) => (
-                <span
-                  key={brand.name}
-                  className={`text-navy ${brand.style} cursor-default hover:opacity-100 hover:scale-105 transition-all duration-300 inline-block`}
-                >
-                  {brand.name}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Section>
+      {/* ── BRAND CLUSTER — Official Partner Logos ── */}
+      <BrandLogos />
 
       {/* ── WHAT WE DO — Asymmetric Grid ── */}
       <section className="py-28 lg:py-40 px-6 lg:px-20 bg-offwhite relative overflow-hidden">

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <rect width="240" height="60" fill="none"/>
+  <text x="120" y="38" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="32" fill="#0A2540" text-anchor="middle" letter-spacing="4">GROHE</text>
+  <path d="M30 46 L210 46" stroke="#0A2540" stroke-width="3"/>
+  <circle cx="215" cy="32" r="4" fill="#D4AF37"/>
+</svg>
