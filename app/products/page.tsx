@@ -161,9 +161,6 @@ function ProductsPageContent() {
       <React.Suspense fallback={<div className="flex justify-center items-center py-20"><div className="animate-pulse w-8 h-8 rounded-full bg-navy/20"></div></div>}>
         <ProductsContent />
       </React.Suspense>
-
-      {/* Floating Cart & Drawer */}
-      <FloatingCart />
     </main>
   );
 }
