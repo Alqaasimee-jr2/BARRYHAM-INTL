@@ -12,7 +12,7 @@ export interface Brand {
 
 export const PARTNER_BRANDS: Brand[] = [
   { name: "GROHE", tagline: "German Engineered Water Systems", logo: "/brands/grohe.svg" },
-  { name: "Ideal Standard", tagline: "Together for Better Bathrooms", logo: "/brands/ideal-standard.svg" },
+  { name: "Ideal Standard", tagline: "Together for Better Bathrooms", logo: "/brands/ideal-standard.png" },
   { name: "Roca", tagline: "European Sanitary Wares & Tiles", logo: "/brands/roca.svg" },
   { name: "Villeroy & Boch", tagline: "Timeless Quality Since 1748", logo: "/brands/villeroy-boch.svg" },
   { name: "hansgrohe", tagline: "Premium Taps & Shower Innovation", logo: "/brands/hansgrohe.svg" },
@@ -21,6 +21,9 @@ export const PARTNER_BRANDS: Brand[] = [
   { name: "Twyford", tagline: "British Bathroom Engineering", logo: "/brands/twyford.svg" },
   { name: "VADO", tagline: "High-End Taps & Brassware", logo: "/brands/vado.svg" },
   { name: "SANIT", tagline: "Concealed Flushing Technology", logo: "/brands/sanit.svg" },
+  { name: "Geberit", tagline: "Swiss Sanitary & Piping Systems", logo: "/brands/geberit.svg" },
+  { name: "Coleman CTIL", tagline: "Wires & Cables Solutions", logo: "/brands/coleman-ctil.png" },
+  { name: "Reigner", tagline: "Bathrooms, Tiles & Specialist Products", logo: "/brands/reigner.png" },
 ];
 
 interface BrandLogosProps {
