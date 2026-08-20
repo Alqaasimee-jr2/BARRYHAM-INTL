@@ -3,6 +3,16 @@ import Link from "next/link";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 
+function InstagramIcon({ className = "", size = 18 }: { className?: string; size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
+
 export function Footer() {
   const whatsappUrl = buildWhatsAppLink("+2348034750270", [], "general");
 
@@ -10,21 +20,32 @@ export function Footer() {
     <footer className="bg-navy text-white pt-16 pb-8">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Brand & WhatsApp */}
+          {/* Brand & Socials */}
           <div>
-            <h3 className="font-heading font-bold text-2xl mb-6">BIL</h3>
+            <h3 className="font-heading font-bold text-2xl mb-4">BIL</h3>
             <p className="text-offwhite/80 font-ui text-sm mb-6 leading-relaxed">
               Top-tier fittings and sanitary ware without premium headaches.
             </p>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gold/10 hover:bg-gold/20 text-gold px-4 py-2 rounded-full transition-colors font-ui text-sm min-h-[44px]"
-            >
-              <MessageCircle size={20} />
-              Chat on WhatsApp
-            </a>
+            <div className="flex flex-col gap-3">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gold/10 hover:bg-gold/20 text-gold px-4 py-2.5 rounded-full transition-colors font-ui text-sm min-h-[44px] w-fit"
+              >
+                <MessageCircle size={18} />
+                Chat on WhatsApp
+              </a>
+              <a
+                href="https://www.instagram.com/barryhamintl/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-offwhite hover:text-white px-4 py-2.5 rounded-full transition-colors font-ui text-sm min-h-[44px] w-fit border border-white/10"
+              >
+                <InstagramIcon size={18} className="text-pink-400" />
+                Follow @barryhamintl
+              </a>
+            </div>
           </div>
 
           {/* Locations */}

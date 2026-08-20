@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120" width="500" height="120">
+  <style>
+    .kohler-text {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 800;
+      font-size: 82px;
+      letter-spacing: 0.18em;
+      fill: #0B192C;
+    }
+  </style>
+  <text x="250" y="85" text-anchor="middle" class="kohler-text">KOHLER</text>
+</svg>

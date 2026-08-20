@@ -2,8 +2,18 @@
 
 import React, { useState } from "react";
 import { motion, Variants } from "framer-motion";
-import { Phone, Mail, MessageSquare, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MessageSquare, MapPin, Clock, CheckCircle2 } from "lucide-react";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+
+function InstagramIcon({ className = "", size = 20 }: { className?: string; size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
 
 // Fade up animation variants
 const fadeInUp: Variants = {
@@ -15,8 +25,11 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
+    email: "",
     message: "",
   });
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -25,13 +38,30 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent("Website Contact Inquiry from " + formData.name);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:bihl.sales@gmail.com?subject=${subject}&body=${body}`;
+    setSubmitting(true);
+
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      // Also trigger mailto as fallback/direct client action
+      const subject = encodeURIComponent("Website Contact Inquiry from " + formData.name);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      );
+      window.location.href = `mailto:bihl.sales@gmail.com?subject=${subject}&body=${body}`;
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleWhatsAppGeneral = () => {
@@ -174,6 +204,19 @@ export default function ContactPage() {
                 <span>bihl.sales@gmail.com</span>
               </a>
 
+              <a
+                href="https://www.instagram.com/barryhamintl/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 border border-pink-500/20 bg-pink-500/5 hover:bg-pink-500/10 rounded-xl transition-all font-ui text-sm text-charcoal min-h-[44px]"
+              >
+                <InstagramIcon className="text-pink-500 shrink-0" size={20} />
+                <div>
+                  <span className="font-semibold block text-navy">Follow us on Instagram</span>
+                  <span className="text-xs text-charcoal/60">@barryhamintl — See our latest projects & catalog</span>
+                </div>
+              </a>
+
               <button
                 onClick={handleWhatsAppGeneral}
                 className="w-full flex items-center gap-4 p-4 border border-[#B08D57] bg-gold/5 hover:bg-gold/10 rounded-xl transition-all font-ui text-sm text-gold font-semibold text-left min-h-[44px]"
@@ -191,60 +234,93 @@ export default function ContactPage() {
 
             <div className="border-t border-navy/5 my-4" />
 
-            {/* Mailto Submit Form */}
-            <form onSubmit={handleFormSubmit} className="space-y-6">
-              <div>
-                <label className="block font-ui text-xs font-semibold text-charcoal/60 uppercase tracking-wider mb-2">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="John Doe"
-                  className="w-full border border-navy/10 rounded-lg px-4 py-3 bg-white font-ui text-sm text-charcoal focus:border-gold outline-none min-h-[44px]"
-                />
+            {/* Email Inquiry Form */}
+            {submitted ? (
+              <div className="p-6 bg-emerald-50 border border-emerald-200 rounded-xl text-center flex flex-col items-center gap-3">
+                <CheckCircle2 size={36} className="text-emerald-600" />
+                <h3 className="font-heading text-lg font-bold text-emerald-900">Inquiry Sent Successfully</h3>
+                <p className="font-ui text-xs text-emerald-800 leading-relaxed">
+                  Thank you! Your message has been routed to our sales team at bihl.sales@gmail.com. We will respond promptly.
+                </p>
+                <button
+                  onClick={() => setSubmitted(false)}
+                  className="mt-2 text-xs font-ui font-semibold text-emerald-700 underline hover:text-emerald-900"
+                >
+                  Send another inquiry
+                </button>
               </div>
+            ) : (
+              <form onSubmit={handleFormSubmit} className="space-y-6">
+                <div>
+                  <label className="block font-ui text-xs font-semibold text-charcoal/60 uppercase tracking-wider mb-2">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="John Doe"
+                    className="w-full border border-navy/10 rounded-lg px-4 py-3 bg-white font-ui text-sm text-charcoal focus:border-gold outline-none min-h-[44px]"
+                  />
+                </div>
 
-              <div>
-                <label className="block font-ui text-xs font-semibold text-charcoal/60 uppercase tracking-wider mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  required
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  placeholder="+234..."
-                  className="w-full border border-navy/10 rounded-lg px-4 py-3 bg-white font-ui text-sm text-charcoal focus:border-gold outline-none min-h-[44px]"
-                />
-              </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block font-ui text-xs font-semibold text-charcoal/60 uppercase tracking-wider mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      required
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="+234..."
+                      className="w-full border border-navy/10 rounded-lg px-4 py-3 bg-white font-ui text-sm text-charcoal focus:border-gold outline-none min-h-[44px]"
+                    />
+                  </div>
 
-              <div>
-                <label className="block font-ui text-xs font-semibold text-charcoal/60 uppercase tracking-wider mb-2">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  required
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  placeholder="Detail your request..."
-                  className="w-full border border-navy/10 rounded-lg px-4 py-3 bg-white font-ui text-sm text-charcoal focus:border-gold outline-none min-h-[44px]"
-                />
-              </div>
+                  <div>
+                    <label className="block font-ui text-xs font-semibold text-charcoal/60 uppercase tracking-wider mb-2">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="client@example.com"
+                      className="w-full border border-navy/10 rounded-lg px-4 py-3 bg-white font-ui text-sm text-charcoal focus:border-gold outline-none min-h-[44px]"
+                    />
+                  </div>
+                </div>
 
-              <button
-                type="submit"
-                className="w-full bg-navy hover:bg-gold text-white font-ui font-semibold py-4 rounded-lg transition-colors min-h-[44px] uppercase text-sm tracking-wider"
-              >
-                Send Inquiry Email
-              </button>
-            </form>
+                <div>
+                  <label className="block font-ui text-xs font-semibold text-charcoal/60 uppercase tracking-wider mb-2">
+                    Message / Specifications
+                  </label>
+                  <textarea
+                    name="message"
+                    required
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    placeholder="Detail your request or required fittings..."
+                    className="w-full border border-navy/10 rounded-lg px-4 py-3 bg-white font-ui text-sm text-charcoal focus:border-gold outline-none min-h-[44px]"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="w-full bg-navy hover:bg-gold text-white font-ui font-semibold py-4 rounded-lg transition-colors min-h-[44px] uppercase text-sm tracking-wider flex items-center justify-center gap-2"
+                >
+                  {submitting ? "Sending Inquiry..." : "Send Inquiry Email"}
+                </button>
+              </form>
+            )}
           </motion.div>
         </div>
       </section>

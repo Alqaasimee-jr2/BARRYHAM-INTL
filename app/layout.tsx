@@ -20,22 +20,45 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://barryham.site"),
-  title: "Barryham Int'l Ltd | Premium Fittings & Sanitary Ware",
-  description: "BIL supplies and installs genuine sanitary ware, electricals, and interior finishes across Lagos, Agege, Igando, and all of Nigeria.",
-  keywords: ["sanitary ware", "fittings", "electricals", "interior finishes", "Nigeria", "Barryham", "bathroom fittings"],
+  title: "Barryham Int'l Ltd | Premium Sanitary Ware & Electrical Fittings",
+  description: "Direct distributor for Ideal Standard, Armitage Shanks, Geberit, Grohe, Kohler, Reigner, Roca, Vado, Hansgrohe, Ariston Water Heater, and Coleman CTIL across Lagos and Nigeria.",
+  keywords: [
+    "Ideal Standard Nigeria",
+    "Armitage Shanks Lagos",
+    "Geberit distributor",
+    "Grohe taps Nigeria",
+    "Kohler sanitary ware",
+    "Ariston water heater Nigeria",
+    "Roca sanitary fittings",
+    "Vado brassware Lagos",
+    "sanitary ware supplier Lagos",
+    "Barryham International",
+  ],
   authors: [{ name: "Barryham Int'l Ltd" }],
+  alternates: {
+    canonical: "https://barryham.site",
+  },
   openGraph: {
-    title: "Barryham Int'l Ltd | Premium Fittings & Sanitary Ware",
-    description: "BIL supplies and installs genuine sanitary ware, electricals, and interior finishes across Lagos, Agege, Igando, and all of Nigeria.",
+    title: "Barryham Int'l Ltd | Premium Sanitary Ware & Building Materials",
+    description: "Official direct supplier for leading European & global sanitary, plumbing, and electrical manufacturers in Nigeria.",
     url: "https://barryham.site",
     siteName: "Barryham Int'l Ltd",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Barryham Int'l Ltd Official Distributor",
+      },
+    ],
     locale: "en_NG",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Barryham Int'l Ltd | Premium Fittings & Sanitary Ware",
-    description: "BIL supplies and installs genuine sanitary ware, electricals, and interior finishes across Lagos, Agege, Igando, and all of Nigeria.",
+    title: "Barryham Int'l Ltd | Premium Sanitary Ware & Building Materials",
+    description: "Official direct supplier for leading European & global sanitary, plumbing, and electrical manufacturers in Nigeria.",
+    images: ["/og-image.png"],
   },
   icons: {
     icon: "/icon.svg",
@@ -64,10 +87,13 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Barryham Int'l Ltd",
-    description: "BIL supplies and installs genuine sanitary ware, electricals, and interior finishes across Lagos, Agege, Igando, and all of Nigeria.",
+    description: "Direct distributor & installer for Ideal Standard, Armitage Shanks, Geberit, Grohe, Kohler, Reigner, Roca, Vado, Hansgrohe, Ariston Water Heater, and Coleman CTIL.",
     url: "https://barryham.site",
     email: "bihl.sales@gmail.com",
     telephone: ["+2348034750270", "+2348084446319", "+2349090381508"],
+    sameAs: [
+      "https://www.instagram.com/barryhamintl/"
+    ],
     location: [
       {
         "@type": "Place",
