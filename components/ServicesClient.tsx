@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Wrench,
   Droplets,
@@ -24,6 +25,7 @@ interface ServiceItem {
   capabilities: string[];
   landingHref: string;
   landingLabel: string;
+  image: string;
 }
 
 const CORE_SERVICES: ServiceItem[] = [
@@ -41,6 +43,7 @@ const CORE_SERVICES: ServiceItem[] = [
     ],
     landingHref: "/sanitary-ware-lagos",
     landingLabel: "Explore Sanitary Ware in Lagos",
+    image: "/services/service-sanitary.webp",
   },
   {
     id: "plumbing-engineering",
@@ -56,6 +59,7 @@ const CORE_SERVICES: ServiceItem[] = [
     ],
     landingHref: "/plumbing-fittings-lagos",
     landingLabel: "Explore Plumbing Fittings in Lagos",
+    image: "/services/service-plumbing.webp",
   },
   {
     id: "electrical-supply",
@@ -71,6 +75,7 @@ const CORE_SERVICES: ServiceItem[] = [
     ],
     landingHref: "/electrical-fittings-lagos",
     landingLabel: "Explore Electrical Cables & Fittings",
+    image: "/services/service-electrical.webp",
   },
   {
     id: "tiling-installation",
@@ -86,6 +91,7 @@ const CORE_SERVICES: ServiceItem[] = [
     ],
     landingHref: "/bathroom-fittings-nigeria",
     landingLabel: "Explore Bathroom Solutions in Nigeria",
+    image: "/services/service-tiling.webp",
   },
   {
     id: "bulk-logistics",
@@ -101,6 +107,7 @@ const CORE_SERVICES: ServiceItem[] = [
     ],
     landingHref: "/bulk-supply-contractors",
     landingLabel: "Explore Bulk Contractor Supply",
+    image: "/services/service-logistics.webp",
   },
 ];
 
@@ -120,23 +127,34 @@ export function ServicesClient() {
           return (
             <div
               key={service.id}
-              className="bg-white rounded-2xl p-7 border border-navy/10 shadow-sm hover:shadow-md hover:border-gold/40 transition-all flex flex-col justify-between group"
+              className="bg-white rounded-2xl p-6 border border-navy/10 shadow-sm hover:shadow-md hover:border-gold/40 transition-all flex flex-col justify-between group overflow-hidden"
             >
               <div>
-                <div className="flex items-center justify-between mb-5">
-                  <span className="font-ui text-[10px] font-semibold uppercase tracking-widest text-gold bg-offwhite px-2.5 py-1 rounded-full border border-navy/5">
+                {/* Hyper-realistic service visual */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl mb-5 bg-navy/5">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                  <span className="absolute bottom-3 left-3 font-ui text-[10px] font-semibold uppercase tracking-widest text-white bg-navy/85 backdrop-blur-sm px-2.5 py-1 rounded-full border border-white/10">
                     {service.categoryTag}
                   </span>
-                  <div className="w-10 h-10 rounded-xl bg-navy/5 group-hover:bg-navy group-hover:text-gold flex items-center justify-center text-navy transition-colors">
-                    <Icon size={19} />
+                </div>
+
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="font-heading font-semibold text-xl text-navy group-hover:text-gold transition-colors">
+                    {service.title}
+                  </h3>
+                  <div className="w-9 h-9 rounded-xl bg-navy/5 group-hover:bg-navy group-hover:text-gold flex items-center justify-center text-navy transition-colors shrink-0 ml-3">
+                    <Icon size={18} />
                   </div>
                 </div>
 
-                <h3 className="font-heading font-semibold text-xl text-navy group-hover:text-gold transition-colors mb-3">
-                  {service.title}
-                </h3>
-
-                <p className="font-ui text-xs md:text-sm text-charcoal/70 leading-relaxed mb-6">
+                <p className="font-ui text-xs md:text-sm text-charcoal/70 leading-relaxed mb-5">
                   {service.description}
                 </p>
 
