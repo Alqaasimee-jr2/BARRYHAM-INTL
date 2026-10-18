@@ -2,10 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
-import { MessageCircle, FileText, Phone } from "lucide-react";
+import { MessageCircle, FileText } from "lucide-react";
 import { BUSINESS_INFO, STICKY_WHATSAPP_LINK } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
-import { TrustBadges } from "./TrustBadges";
 import { trackConversion } from "@/lib/analytics";
 
 interface SectionWhatsAppCTAProps {
@@ -18,12 +17,11 @@ interface SectionWhatsAppCTAProps {
 }
 
 export function SectionWhatsAppCTA({
-  title = "Need Pricing, Stock Availability, or a Project Quote?",
-  subtitle = "Send your list or BOQ directly to our sales engineers on WhatsApp for fast Lagos & nationwide pricing.",
+  title = "Inquire or Request a Specification Quote",
+  subtitle = "Connect directly with our technical desk for stock confirmation, BOQ pricing, and delivery schedules.",
   whatsappMessage,
   contextLabel = "section_cta",
   variant = "navy",
-  showTrustBadges = true,
 }: SectionWhatsAppCTAProps) {
   const href = whatsappMessage
     ? buildWhatsAppLink(
@@ -38,34 +36,34 @@ export function SectionWhatsAppCTA({
 
   return (
     <div
-      className={`rounded-3xl p-6 md:p-10 border transition-all ${
+      className={`rounded-2xl p-6 md:p-8 transition-all ${
         isNavy
-          ? "bg-navy text-white border-navy shadow-xl"
-          : "bg-white text-navy border-navy/10 shadow-sm"
+          ? "bg-navy text-white shadow-sm border border-navy/20"
+          : "bg-white text-navy border border-navy/10 shadow-sm"
       }`}
     >
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-        <div className="max-w-2xl">
-          <span className="font-ui text-xs font-semibold uppercase tracking-[0.2em] text-gold block mb-2">
-            Direct Trade &amp; Retail Supply • {BUSINESS_INFO.openingHours.shortDisplay}
-          </span>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="max-w-xl">
+          <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.2em] text-gold mb-1.5">
+            Technical Support &amp; Pricing
+          </p>
           <h3
-            className={`font-heading font-bold text-2xl md:text-3xl mb-2 ${
+            className={`font-heading font-semibold text-xl md:text-2xl mb-1.5 ${
               isNavy ? "text-white" : "text-navy"
             }`}
           >
             {title}
           </h3>
           <p
-            className={`font-ui text-sm md:text-base leading-relaxed ${
-              isNavy ? "text-offwhite/80" : "text-charcoal/80"
+            className={`font-ui text-xs md:text-sm leading-relaxed ${
+              isNavy ? "text-offwhite/75" : "text-charcoal/70"
             }`}
           >
             {subtitle}
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 shrink-0">
+        <div className="flex flex-wrap items-center gap-3 shrink-0">
           <a
             href={href}
             target="_blank"
@@ -73,46 +71,25 @@ export function SectionWhatsAppCTA({
             onClick={() =>
               trackConversion("whatsapp_click", { location: contextLabel })
             }
-            className="inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-ui font-semibold text-sm px-6 py-3.5 rounded-full shadow-md transition-colors min-h-[48px]"
+            className="inline-flex items-center gap-2 bg-gold hover:bg-gold/90 text-white font-ui font-semibold text-xs uppercase tracking-wider px-5 py-3 rounded-full transition-colors shadow-sm min-h-[42px]"
           >
-            <MessageCircle size={18} />
+            <MessageCircle size={15} />
             Chat on WhatsApp
           </a>
 
           <Link
             href="/request-quote"
-            className={`inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-6 py-3.5 rounded-full transition-colors min-h-[48px] ${
+            className={`inline-flex items-center gap-1.5 font-ui font-semibold text-xs uppercase tracking-wider px-4 py-3 rounded-full transition-colors min-h-[42px] ${
               isNavy
-                ? "bg-gold hover:bg-gold/90 text-white"
-                : "bg-navy hover:bg-gold text-white"
+                ? "border border-white/20 text-white hover:border-gold hover:text-gold"
+                : "border border-navy/20 text-navy hover:border-gold hover:text-gold"
             }`}
           >
-            <FileText size={17} />
-            Request a Quote
+            <FileText size={14} />
+            Request Quote
           </Link>
-
-          <a
-            href={`tel:${BUSINESS_INFO.primaryPhone}`}
-            onClick={() =>
-              trackConversion("call_click", { location: contextLabel })
-            }
-            className={`inline-flex items-center justify-center gap-2 font-ui font-medium text-sm px-5 py-3.5 rounded-full border transition-colors min-h-[48px] ${
-              isNavy
-                ? "border-white/20 text-white hover:bg-white/10"
-                : "border-navy/20 text-navy hover:border-gold hover:text-gold"
-            }`}
-          >
-            <Phone size={16} />
-            {BUSINESS_INFO.primaryPhoneDisplay}
-          </a>
         </div>
       </div>
-
-      {showTrustBadges && (
-        <div className="mt-8 pt-6 border-t border-current/10">
-          <TrustBadges variant={isNavy ? "dark" : "light"} compact />
-        </div>
-      )}
     </div>
   );
 }

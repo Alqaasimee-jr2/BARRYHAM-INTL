@@ -15,7 +15,6 @@ import {
 } from "lucide-react";
 import { BUSINESS_INFO, STICKY_WHATSAPP_LINK } from "@/lib/constants";
 import { buildContactSubmissionWhatsAppLink } from "@/lib/whatsapp";
-import { TrustBadges } from "./TrustBadges";
 import { trackConversion } from "@/lib/analytics";
 
 function InstagramIcon({
@@ -81,11 +80,7 @@ export function ContactClient() {
   };
 
   return (
-    <section className="py-16 px-6 lg:px-12 max-w-[1440px] mx-auto w-full">
-      <div className="mb-12">
-        <TrustBadges />
-      </div>
-
+    <section className="py-16 px-6 lg:px-12 max-w-7xl mx-auto w-full">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-14">
         {/* Left Column: Showrooms, Opening Hours & Maps */}
         <motion.div
@@ -291,9 +286,9 @@ export function ContactClient() {
                   href={submittedWhatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#25D366] text-white font-ui font-semibold text-xs px-5 py-2.5 rounded-full inline-flex items-center gap-1.5"
+                  className="bg-navy hover:bg-gold text-white font-ui font-semibold text-xs px-5 py-2.5 rounded-full inline-flex items-center gap-1.5 transition-colors"
                 >
-                  <MessageCircle size={15} />
+                  <MessageCircle size={15} className="text-gold" />
                   Open WhatsApp Chat
                 </a>
                 <button

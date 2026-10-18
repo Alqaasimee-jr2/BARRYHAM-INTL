@@ -32,35 +32,35 @@ function InstagramIcon({
 export function Footer() {
   return (
     <footer className="bg-navy text-white pt-16 pb-12 border-t border-white/10">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-14">
           {/* Column 1: Brand, NAP Summary & Primary CTAs (4 cols) */}
           <div className="lg:col-span-4">
-            <h3 className="font-heading font-bold text-2xl mb-2">
+            <h3 className="font-heading font-semibold text-2xl mb-2 text-white">
               {BUSINESS_INFO.name}
             </h3>
-            <p className="text-gold font-ui text-xs uppercase tracking-widest mb-4">
+            <p className="text-gold font-ui text-[11px] uppercase tracking-widest mb-4 font-semibold">
               Authorised Sanitary, Plumbing &amp; Electrical Distributor
             </p>
-            <p className="text-offwhite/80 font-ui text-sm mb-6 leading-relaxed">
+            <p className="text-offwhite/75 font-ui text-xs md:text-sm mb-6 leading-relaxed">
               Direct distributor and certified installer for Grohe, Ideal Standard, Villeroy &amp; Boch, Roca, Armitage Shanks, Geberit, Varmora, Ariston Water Heaters, and Coleman CTIL cables across Lagos and Nigeria.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2.5">
               <a
                 href={STICKY_WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white px-4 py-2.5 rounded-full transition-colors font-ui font-semibold text-xs uppercase tracking-wider min-h-[44px]"
+                className="inline-flex items-center gap-1.5 bg-gold hover:bg-gold/90 text-white px-4 py-2.5 rounded-full transition-colors font-ui font-semibold text-xs uppercase tracking-wider min-h-[40px]"
               >
-                <MessageCircle size={16} />
-                Chat on WhatsApp
+                <MessageCircle size={15} />
+                WhatsApp
               </a>
               <Link
                 href="/request-quote"
-                className="inline-flex items-center gap-2 bg-gold hover:bg-gold/90 text-white px-4 py-2.5 rounded-full transition-colors font-ui font-semibold text-xs uppercase tracking-wider min-h-[44px]"
+                className="inline-flex items-center gap-1.5 border border-white/20 hover:border-gold hover:text-gold text-white px-4 py-2.5 rounded-full transition-colors font-ui font-semibold text-xs uppercase tracking-wider min-h-[40px]"
               >
-                <FileText size={16} />
-                Request a Quote
+                <FileText size={15} />
+                Request Quote
               </Link>
               <a
                 href={BUSINESS_INFO.socials.instagram}

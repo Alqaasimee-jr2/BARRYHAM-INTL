@@ -65,9 +65,9 @@ export function ProductDetailActions({
           target="_blank"
           rel="noopener noreferrer"
           onClick={handleWhatsAppClick}
-          className="flex-1 inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-ui font-semibold text-sm tracking-wide rounded-full shadow-md transition-colors duration-300 text-center min-h-[52px]"
+          className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-navy hover:bg-gold text-white font-ui font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm transition-colors duration-300 text-center min-h-[46px]"
         >
-          <MessageCircle size={19} />
+          <MessageCircle size={16} className="text-gold" />
           Chat on WhatsApp to order
         </a>
 
@@ -133,10 +133,10 @@ export function ProductDetailActions({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleWhatsAppClick}
-                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-ui font-semibold text-xs rounded-full whitespace-nowrap min-h-[42px]"
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-gold hover:bg-gold/90 text-white font-ui font-semibold text-xs rounded-full whitespace-nowrap min-h-[38px]"
                 >
-                  <MessageCircle size={15} />
-                  Chat on WhatsApp to order
+                  <MessageCircle size={14} />
+                  WhatsApp to order
                 </a>
                 <button
                   type="button"

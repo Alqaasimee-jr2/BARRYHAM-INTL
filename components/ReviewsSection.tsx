@@ -7,17 +7,17 @@ import { BUSINESS_INFO } from "@/lib/constants";
 export function ReviewsSection({ className = "" }: { className?: string }) {
   return (
     <section
-      className={`py-24 px-6 lg:px-12 bg-offwhite ${className}`}
+      className={`py-20 px-6 lg:px-12 bg-offwhite ${className}`}
       id="reviews"
     >
-      <div className="max-w-[1440px] mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <span className="font-ui text-xs font-bold uppercase tracking-[0.25em] text-gold block mb-3">
-              Verified Client &amp; Google Reviews
-            </span>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-navy">
-              Trusted by Contractors, Architects &amp; Homeowners Across Nigeria
+            <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.25em] text-gold mb-2">
+              Client &amp; Partner Testimonials
+            </p>
+            <h2 className="font-heading font-semibold text-2xl md:text-3xl text-navy">
+              Trusted by Architects, Contractors &amp; Homeowners
             </h2>
           </div>
 

@@ -12,7 +12,6 @@ import {
 import { products } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductDetailActions } from "@/components/ProductDetailActions";
-import { TrustBadges } from "@/components/TrustBadges";
 import { SectionWhatsAppCTA } from "@/components/SectionWhatsAppCTA";
 import { getProductSchema, getBreadcrumbSchema } from "@/lib/schema";
 import { BUSINESS_INFO } from "@/lib/constants";
@@ -145,13 +144,7 @@ export default function ProductDetailPage({
                 </div>
               )}
               <div className="absolute top-4 left-4 z-10 flex flex-wrap gap-2">
-                <span
-                  className={`font-ui text-xs font-semibold tracking-wider uppercase px-3 py-1.5 rounded-full shadow-sm ${
-                    product.availability === "In Stock"
-                      ? "bg-emerald-600 text-white"
-                      : "bg-amber-500 text-white"
-                  }`}
-                >
+                <span className="font-ui text-xs font-semibold tracking-wider uppercase px-3 py-1.5 rounded-full shadow-sm bg-white/95 text-navy border border-navy/10">
                   {product.availability}
                 </span>
                 <span className="font-ui text-xs font-semibold tracking-wider uppercase bg-white border border-navy/10 text-navy px-3 py-1.5 rounded-full shadow-sm">
@@ -298,11 +291,6 @@ export default function ProductDetailPage({
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Trust Badges */}
-        <div className="mt-10">
-          <TrustBadges />
         </div>
       </section>
 

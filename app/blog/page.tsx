@@ -53,7 +53,7 @@ export default function BlogPage() {
       </section>
 
       {/* Featured Articles */}
-      <section className="pt-16 px-6 lg:px-12 max-w-[1440px] mx-auto w-full">
+      <section className="pt-16 px-6 lg:px-12 max-w-7xl mx-auto w-full">
         <h2 className="font-heading font-semibold text-2xl text-navy mb-8">
           Featured Guides
         </h2>

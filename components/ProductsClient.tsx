@@ -14,7 +14,6 @@ import {
 import { PROJECT_TYPES } from "@/lib/constants";
 import { ProductCard } from "@/components/ProductCard";
 import { SectionWhatsAppCTA } from "@/components/SectionWhatsAppCTA";
-import { TrustBadges } from "@/components/TrustBadges";
 
 const CATEGORIES: { id: "All" | ProductCategory; label: string }[] = [
   { id: "All", label: "All Categories" },
@@ -295,10 +294,7 @@ export function ProductsClient() {
       </div>
 
       {/* Product Grid */}
-      <section className="pt-10 px-6 lg:px-12 max-w-[1440px] mx-auto w-full">
-        <div className="mb-8">
-          <TrustBadges compact />
-        </div>
+      <section className="pt-8 px-6 lg:px-12 max-w-7xl mx-auto w-full">
 
         <motion.div
           layout

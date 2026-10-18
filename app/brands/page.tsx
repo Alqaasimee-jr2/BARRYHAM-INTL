@@ -10,7 +10,6 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { PARTNER_BRANDS } from "@/data/brands";
-import { TrustBadges } from "@/components/TrustBadges";
 import { SectionWhatsAppCTA } from "@/components/SectionWhatsAppCTA";
 import { WhyBarryham } from "@/components/WhyBarryham";
 import { STICKY_WHATSAPP_LINK } from "@/lib/constants";
@@ -169,33 +168,29 @@ export default function BrandsPage() {
             For homeowners, architects, MEP engineers, and contractors who refuse counterfeit building materials: Barryham International Limited supplies 15 globally certified manufacturers directly from our Dopemu and Alimosho showrooms.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-3.5">
             <a
               href={STICKY_WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-ui font-semibold text-sm px-7 py-4 rounded-full shadow-md transition-colors min-h-[50px]"
+              className="inline-flex items-center gap-2 bg-gold hover:bg-gold/90 text-white font-ui font-semibold text-xs uppercase tracking-wider px-6 py-3.5 rounded-full shadow-sm transition-colors min-h-[46px]"
             >
-              <MessageCircle size={18} />
-              Chat on WhatsApp for Brand Price List
+              <MessageCircle size={16} />
+              Inquire on WhatsApp
             </a>
             <Link
               href="/request-quote"
-              className="inline-flex items-center gap-2 bg-gold hover:bg-gold/90 text-white font-ui font-semibold text-sm px-7 py-4 rounded-full shadow-md transition-colors min-h-[50px]"
+              className="inline-flex items-center gap-2 border border-white/20 hover:border-gold text-white hover:text-gold font-ui font-semibold text-xs uppercase tracking-wider px-6 py-3.5 rounded-full transition-colors min-h-[46px]"
             >
-              <FileText size={18} />
+              <FileText size={16} />
               Request a Brand Quote
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="max-w-[1440px] mx-auto w-full px-6 lg:px-12 -mt-6 z-10">
-        <TrustBadges />
-      </section>
-
       {/* Brand Directory Grid */}
-      <section className="py-16 px-6 lg:px-12 max-w-[1440px] mx-auto w-full">
+      <section className="py-16 px-6 lg:px-12 max-w-7xl mx-auto w-full">
         <div className="mb-10">
           <span className="font-ui text-xs font-bold uppercase tracking-[0.25em] text-gold block mb-2">
             Official Distribution Portfolio

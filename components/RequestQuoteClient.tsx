@@ -103,39 +103,39 @@ export function RequestQuoteClient() {
                   location: "quote_confirmation_screen",
                 })
               }
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-ui font-semibold text-sm px-8 py-4 rounded-full shadow-md transition-colors min-h-[52px]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-navy hover:bg-gold text-white font-ui font-semibold text-xs uppercase tracking-wider px-7 py-3.5 rounded-full shadow-sm transition-colors min-h-[46px]"
             >
-              <MessageCircle size={20} />
-              Send Quote on WhatsApp Now
+              <MessageCircle size={17} className="text-gold" />
+              Open Quote on WhatsApp
             </a>
             <button
               type="button"
               onClick={() => setSubmittedUrl(null)}
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 rounded-full border border-navy/20 text-navy font-ui font-semibold text-sm hover:border-gold hover:text-gold transition-colors min-h-[52px]"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-full border border-navy/20 text-navy font-ui font-semibold text-xs uppercase tracking-wider hover:border-gold hover:text-gold transition-colors min-h-[46px]"
             >
-              Edit or Submit Another Quote
+              Edit Quote
             </button>
           </div>
         </div>
       ) : (
-        <div className="bg-white rounded-3xl p-6 md:p-12 border border-navy/10 shadow-md">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 mb-8 border-b border-navy/10">
+        <div className="bg-white rounded-3xl p-6 md:p-10 border border-navy/10 shadow-sm">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 mb-8 border-b border-navy/10">
             <div>
-              <span className="font-ui text-xs font-bold uppercase tracking-[0.2em] text-gold block mb-1">
-                Fast Response Within 1 Hour ({BUSINESS_INFO.openingHours.shortDisplay})
+              <span className="font-ui text-[10px] font-semibold uppercase tracking-[0.2em] text-gold block mb-1">
+                Direct Technical Desk ({BUSINESS_INFO.openingHours.shortDisplay})
               </span>
-              <h2 className="font-heading font-bold text-2xl md:text-3xl text-navy">
-                Project &amp; Product Quote Form
+              <h2 className="font-heading font-semibold text-2xl md:text-3xl text-navy">
+                Request a Formal Quote
               </h2>
             </div>
             <a
               href={STICKY_WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs font-ui font-semibold text-[#1ebe5d] bg-[#25D366]/10 hover:bg-[#25D366]/20 px-4 py-2.5 rounded-full transition-colors w-fit"
+              className="inline-flex items-center gap-2 text-xs font-ui font-semibold text-navy bg-navy/5 hover:bg-navy/10 px-4 py-2.5 rounded-full transition-colors w-fit"
             >
-              <MessageCircle size={16} />
-              Prefer instant chat? Message us on WhatsApp
+              <MessageCircle size={15} className="text-gold" />
+              Prefer direct chat? Message on WhatsApp
             </a>
           </div>
 
@@ -317,17 +317,17 @@ export function RequestQuoteClient() {
             <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
               <button
                 type="submit"
-                className="w-full sm:flex-1 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-ui font-semibold py-4 px-8 rounded-full shadow-lg transition-colors min-h-[54px] text-sm uppercase tracking-wider flex items-center justify-center gap-2.5"
+                className="w-full sm:flex-1 bg-navy hover:bg-gold text-white font-ui font-semibold py-3.5 px-8 rounded-full shadow-sm transition-colors min-h-[48px] text-xs uppercase tracking-wider flex items-center justify-center gap-2"
               >
-                <MessageCircle size={20} />
-                Submit Quote Request via WhatsApp
+                <MessageCircle size={16} className="text-gold" />
+                Submit Quote Request on WhatsApp
               </button>
 
               <a
                 href={`tel:${BUSINESS_INFO.primaryPhone}`}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full border border-navy/20 text-navy hover:border-gold hover:text-gold font-ui font-semibold text-sm transition-colors min-h-[54px]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-navy/20 text-navy hover:border-gold hover:text-gold font-ui font-semibold text-xs uppercase tracking-wider transition-colors min-h-[48px]"
               >
-                <Phone size={17} />
+                <Phone size={15} />
                 Call {BUSINESS_INFO.primaryPhoneDisplay}
               </a>
             </div>

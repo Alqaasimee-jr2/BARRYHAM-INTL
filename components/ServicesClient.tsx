@@ -1,246 +1,190 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, Variants } from "framer-motion";
-import Image from "next/image";
+import React from "react";
 import Link from "next/link";
-import { MessageCircle, FileText, ArrowRight } from "lucide-react";
+import {
+  Wrench,
+  Droplets,
+  Zap,
+  Layers,
+  Truck,
+  ArrowRight,
+  MessageCircle,
+} from "lucide-react";
+import { SectionWhatsAppCTA } from "@/components/SectionWhatsAppCTA";
+import { BUSINESS_INFO } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
-import { BUSINESS_INFO, PROJECT_TYPES } from "@/lib/constants";
-import { SectionWhatsAppCTA } from "./SectionWhatsAppCTA";
-import { TrustBadges } from "./TrustBadges";
 
-const SERVICES = [
+interface ServiceItem {
+  id: string;
+  icon: React.ElementType;
+  title: string;
+  categoryTag: string;
+  description: string;
+  capabilities: string[];
+  landingHref: string;
+  landingLabel: string;
+}
+
+const CORE_SERVICES: ServiceItem[] = [
   {
-    id: "s-1",
-    title: "Plumbing & Sanitary Ware Supply & Installation",
+    id: "sanitary-supply",
+    icon: Droplets,
+    title: "Sanitary Ware Supply & Fitting",
+    categoryTag: "Bathrooms & Ceramics",
     description:
-      "We handle the complete sourcing and certified installation of genuine European WCs, concealed cisterns, basins, pipes, valves, traps, drains, and Ariston water heaters for your site. By partnering directly with Grohe, Ideal Standard, Villeroy & Boch, and Roca, we guarantee leak-free longevity.",
-    features: [
-      "Wall-hung & close-coupled WCs, concealed frames & flush plates",
-      "Heavy-duty copper, PPR & UPVC piping and pressure valves",
-      "Ariston water heaters & thermostatic shower mixer installations",
+      "Direct procurement, inspection, and professional installation of European-engineered vitreous china WCs, concealed cistern frames, vanity basins, and brassware.",
+    capabilities: [
+      "Wall-hung & back-to-wall WC suites with dual-flush pneumatic actuation",
+      "Concealed thermostatic shower valves, rain heads & ceramic disc mixers",
+      "Hospital-grade sensor taps, scrub basins & commercial urinals",
     ],
-    image: "/service-plumbing.webp",
-    imageAlt: "Plumbing fittings, copper pipes, valves and sanitary installation by Barryham Int'l Ltd Lagos",
+    landingHref: "/sanitary-ware-lagos",
+    landingLabel: "Explore Sanitary Ware in Lagos",
+  },
+  {
+    id: "plumbing-engineering",
+    icon: Wrench,
+    title: "Plumbing Systems & Water Heating",
+    categoryTag: "Piping & Valves",
+    description:
+      "Engineered water supply and drainage solutions using genuine PPR, uPVC, and brass components built to endure local borehole and municipal water pressures.",
+    capabilities: [
+      "PN20 heat-fusion PPR pipes & fittings for hot and cold distribution",
+      "Heavy-duty brass gate valves, ball valves & non-return check valves",
+      "Certified Ariston storage & instant water heater mounting with safety valves",
+    ],
     landingHref: "/plumbing-fittings-lagos",
-    landingLabel: "Explore Plumbing Fittings in Lagos →",
+    landingLabel: "Explore Plumbing Fittings in Lagos",
   },
   {
-    id: "s-2",
-    title: "Supply & Installation of Architectural Tiles & Bathroom Finishings",
+    id: "electrical-supply",
+    icon: Zap,
+    title: "Electrical Cables & Power Distribution",
+    categoryTag: "Cables & Lighting",
     description:
-      "We provide floor and wall tiling plus complete bathroom fit-outs for residential estates, hotels, hospitals, and corporate builds. We supply and install high-grade ceramic and vitrified tiles from Varmora, Roca, and Reigner engineered for high durability.",
-    features: [
-      "Vitrified & porcelain tile supply for wet and high-traffic areas",
-      "Laser-leveled floor and wall alignment installation",
-      "Complete bathroom waterproofing & second-fix trim fitting",
+      "Certified electrical materials for residential estates, institutional facilities, and commercial developments with zero tolerance for substandard wiring.",
+    capabilities: [
+      "SON-certified 99.9% pure electrolytic copper cables (Coleman CTIL)",
+      "Steel Wire Armoured (SWA) sub-main & underground feeder cables",
+      "Industrial & domestic distribution boards, MCBs, and surge protection",
     ],
-    image: "/service-tiles.webp",
-    imageAlt: "Large-format vitrified bathroom and floor tile installation in Lagos by Barryham Int'l Ltd",
-    landingHref: "/bathroom-fittings-nigeria",
-    landingLabel: "Explore Bathroom Fittings Nigeria →",
-  },
-  {
-    id: "s-3",
-    title: "Electrical Cables, Lighting & Interior Finishings",
-    description:
-      "We supply SON-certified Coleman CTIL electrical cables, switchgear, architectural lighting, and bespoke interior joinery (kitchen cabinets, vanity units, and fitted wardrobes) tailored for modern Nigerian homes and commercial complexes.",
-    features: [
-      "Genuine Coleman CTIL single-core, armoured & flexible copper cables",
-      "Commercial & residential LED lighting and distribution accessories",
-      "Custom moisture-resistant bathroom vanities & kitchen cabinetry",
-    ],
-    image: "/service-interior.webp",
-    imageAlt: "Electrical lighting and bespoke interior finishings installed by Barryham Int'l Ltd",
     landingHref: "/electrical-fittings-lagos",
-    landingLabel: "Explore Electrical Fittings in Lagos →",
+    landingLabel: "Explore Electrical Cables & Fittings",
+  },
+  {
+    id: "tiling-installation",
+    icon: Layers,
+    title: "Architectural Tiling & Wet-Area Fit-Out",
+    categoryTag: "Surfaces & Finishes",
+    description:
+      "Precision floor and wall tiling for bathrooms, lobbies, and high-traffic areas, executed with laser-levelled alignment and complete wet-area sealing.",
+    capabilities: [
+      "Large-format porcelain and vitrified floor and wall tiles",
+      "Precision laser alignment, anti-slip bathroom flooring & epoxy grouting",
+      "Second-fix trim fitting, shower enclosures & bathroom accessories",
+    ],
+    landingHref: "/bathroom-fittings-nigeria",
+    landingLabel: "Explore Bathroom Solutions in Nigeria",
+  },
+  {
+    id: "bulk-logistics",
+    icon: Truck,
+    title: "Contractor Procurement & Site Logistics",
+    categoryTag: "Project Supply",
+    description:
+      "End-to-end supply chain support for developers, main contractors, and MEP consultants, delivering bulk consignments with verified manufacturer certification.",
+    capabilities: [
+      "Bill of Quantities (BOQ) price reviews and phased delivery scheduling",
+      "Direct warehouse dispatches across Lagos and transport to all 36 states",
+      "Manufacturer warranty documentation and dedicated account management",
+    ],
+    landingHref: "/bulk-supply-contractors",
+    landingLabel: "Explore Bulk Contractor Supply",
   },
 ];
 
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
-};
-
 export function ServicesClient() {
-  const [selections, setSelections] = useState<Record<string, string>>({
-    "s-1": "Home",
-    "s-2": "Home",
-    "s-3": "Home",
-  });
-
-  const handleDropdownChange = (serviceId: string, type: string) => {
-    setSelections((prev) => ({ ...prev, [serviceId]: type }));
-  };
-
-  const handleServiceRequest = (serviceId: string, title: string) => {
-    const projectType = selections[serviceId];
-    const link = buildWhatsAppLink(
-      BUSINESS_INFO.whatsappNumber,
-      [{ name: title }],
-      "service",
-      undefined,
-      undefined,
-      projectType
-    );
-    window.open(link, "_blank", "noopener,noreferrer");
-  };
-
   return (
-    <section className="py-16 px-6 lg:px-12 max-w-[1440px] mx-auto w-full flex flex-col gap-20">
-      <TrustBadges />
+    <div className="space-y-16 py-12 px-6 lg:px-12 max-w-7xl mx-auto w-full">
+      {/* Services Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {CORE_SERVICES.map((service) => {
+          const Icon = service.icon;
+          const whatsappHref = buildWhatsAppLink(
+            BUSINESS_INFO.whatsappNumber,
+            [{ name: service.title }],
+            "service"
+          );
 
-      {SERVICES.map((service, index) => {
-        const isEven = index % 2 === 0;
-        return (
-          <div key={service.id} className="space-y-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={fadeInUp}
-              className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-16 bg-white p-6 md:p-10 rounded-3xl border border-navy/10 shadow-sm ${
-                isEven ? "" : "lg:flex-row-reverse"
-              }`}
+          return (
+            <div
+              key={service.id}
+              className="bg-white rounded-2xl p-7 border border-navy/10 shadow-sm hover:shadow-md hover:border-gold/40 transition-all flex flex-col justify-between group"
             >
-              {/* Image */}
-              <div className="w-full lg:w-1/2 aspect-[4/3] rounded-2xl overflow-hidden relative shadow-md">
-                <Image
-                  src={service.image}
-                  alt={service.imageAlt}
-                  fill
-                  className="object-cover"
-                  unoptimized
-                />
-              </div>
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <span className="font-ui text-[10px] font-semibold uppercase tracking-widest text-gold bg-offwhite px-2.5 py-1 rounded-full border border-navy/5">
+                    {service.categoryTag}
+                  </span>
+                  <div className="w-10 h-10 rounded-xl bg-navy/5 group-hover:bg-navy group-hover:text-gold flex items-center justify-center text-navy transition-colors">
+                    <Icon size={19} />
+                  </div>
+                </div>
 
-              {/* Text Block */}
-              <div className="w-full lg:w-1/2 flex flex-col">
-                <span className="font-ui text-xs font-bold uppercase tracking-[0.2em] text-gold mb-2">
-                  Service 0{index + 1} • Supply &amp; Certified Installation
-                </span>
-                <h2 className="font-heading font-bold text-2xl md:text-3xl text-navy mb-4">
+                <h3 className="font-heading font-semibold text-xl text-navy group-hover:text-gold transition-colors mb-3">
                   {service.title}
-                </h2>
-                <p className="font-ui text-charcoal/80 text-sm md:text-base leading-relaxed mb-6">
+                </h3>
+
+                <p className="font-ui text-xs md:text-sm text-charcoal/70 leading-relaxed mb-6">
                   {service.description}
                 </p>
 
-                <ul className="space-y-2.5 mb-6">
-                  {service.features.map((feature, idx) => (
-                    <li
+                <div className="space-y-2 mb-6 pt-4 border-t border-navy/5">
+                  {service.capabilities.map((item, idx) => (
+                    <div
                       key={idx}
-                      className="flex items-center gap-3 text-charcoal font-ui text-sm"
+                      className="flex items-start gap-2 text-xs font-ui text-charcoal/80"
                     >
-                      <span className="w-2 h-2 rounded-full bg-gold shrink-0" />
-                      {feature}
-                    </li>
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
+                      <span>{item}</span>
+                    </div>
                   ))}
-                </ul>
-
-                <Link
-                  href={service.landingHref}
-                  className="font-ui text-xs font-semibold text-navy hover:text-gold uppercase tracking-wider mb-6 inline-flex items-center gap-1 w-fit"
-                >
-                  {service.landingLabel}
-                </Link>
-
-                {/* Project Type Dropdown + WhatsApp CTA (Directive 1.2) */}
-                <div className="pt-6 border-t border-navy/10 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-end gap-4">
-                  <div className="flex flex-col">
-                    <label
-                      htmlFor={`project-type-${service.id}`}
-                      className="font-ui text-xs font-semibold text-charcoal/60 uppercase tracking-wider mb-1.5"
-                    >
-                      Project Type
-                    </label>
-                    <select
-                      id={`project-type-${service.id}`}
-                      value={selections[service.id]}
-                      onChange={(e) =>
-                        handleDropdownChange(service.id, e.target.value)
-                      }
-                      className="border border-navy/15 rounded-xl px-4 py-3 bg-offwhite/50 font-ui text-sm text-charcoal focus:border-gold outline-none min-h-[46px] min-w-[170px]"
-                    >
-                      {PROJECT_TYPES.map((type) => (
-                        <option key={type} value={type}>
-                          {type}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      handleServiceRequest(service.id, service.title)
-                    }
-                    className="bg-[#25D366] hover:bg-[#1ebe5d] text-white font-ui font-semibold px-6 py-3.5 rounded-xl transition-colors min-h-[46px] text-xs tracking-wider uppercase inline-flex items-center justify-center gap-2"
-                  >
-                    <MessageCircle size={17} />
-                    Chat on WhatsApp for This Service
-                  </button>
-
-                  <Link
-                    href="/request-quote"
-                    className="bg-navy hover:bg-gold text-white font-ui font-semibold px-6 py-3.5 rounded-xl transition-colors min-h-[46px] text-xs tracking-wider uppercase inline-flex items-center justify-center gap-2"
-                  >
-                    <FileText size={16} />
-                    Request Formal Quote
-                  </Link>
                 </div>
               </div>
-            </motion.div>
-          </div>
-        );
-      })}
 
-      {/* Links to Dedicated Service Landing Pages */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Link
-          href="/bulk-supply-contractors"
-          className="group bg-white p-8 rounded-2xl border border-navy/10 hover:border-gold shadow-sm transition-all flex items-center justify-between gap-4"
-        >
-          <div>
-            <span className="font-ui text-xs font-bold uppercase tracking-widest text-gold block mb-1">
-              For Developers &amp; MEP Engineers
-            </span>
-            <h3 className="font-heading font-bold text-2xl text-navy group-hover:text-gold transition-colors">
-              Bulk Supply for Contractors
-            </h3>
-            <p className="font-ui text-xs text-charcoal/70 mt-1">
-              Trade discounts, proforma invoices &amp; staged site call-off schedules.
-            </p>
-          </div>
-          <ArrowRight className="text-gold shrink-0" />
-        </Link>
+              <div className="pt-4 border-t border-navy/5 flex items-center justify-between gap-3 text-xs font-ui">
+                <Link
+                  href={service.landingHref}
+                  className="font-semibold text-navy hover:text-gold transition-colors inline-flex items-center gap-1"
+                >
+                  {service.landingLabel} <ArrowRight size={13} />
+                </Link>
 
-        <Link
-          href="/delivery-installation"
-          className="group bg-white p-8 rounded-2xl border border-navy/10 hover:border-gold shadow-sm transition-all flex items-center justify-between gap-4"
-        >
-          <div>
-            <span className="font-ui text-xs font-bold uppercase tracking-widest text-gold block mb-1">
-              Lagos &amp; Nationwide Coverage
-            </span>
-            <h3 className="font-heading font-bold text-2xl text-navy group-hover:text-gold transition-colors">
-              Delivery &amp; Certified Installation
-            </h3>
-            <p className="font-ui text-xs text-charcoal/70 mt-1">
-              24–48hr Lagos delivery and full first/second-fix installation support.
-            </p>
-          </div>
-          <ArrowRight className="text-gold shrink-0" />
-        </Link>
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full text-charcoal/50 hover:text-gold transition-colors"
+                  title="Inquire about this service on WhatsApp"
+                  aria-label="Inquire on WhatsApp"
+                >
+                  <MessageCircle size={16} />
+                </a>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
-      {/* Bottom Section WhatsApp CTA */}
-      <SectionWhatsAppCTA
-        title="Ready to Schedule Material Supply or On-Site Installation?"
-        subtitle="Message our engineering team on WhatsApp with your site location and project requirements."
-        contextLabel="services_page_bottom_cta"
-      />
-    </section>
+      {/* Strategic Single Closing CTA */}
+      <div className="max-w-4xl mx-auto">
+        <SectionWhatsAppCTA
+          title="Discuss Your Project's Installation or Procurement Needs"
+          subtitle="Whether you need sanitary ware specified for an estate or electrical cables delivered to site, our technical sales engineers respond promptly."
+          contextLabel="services_page_cta"
+        />
+      </div>
+    </div>
   );
 }

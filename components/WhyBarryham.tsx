@@ -12,67 +12,67 @@ import {
 const PILLARS = [
   {
     icon: ShieldCheck,
-    title: "Genuine Products Only",
+    title: "Genuine Manufacturer Stock",
     description:
-      "We are direct manufacturer representatives for Grohe, Ideal Standard, Villeroy & Boch, Roca, Geberit, Ariston, and Coleman CTIL. Zero counterfeits—every item carries authentic manufacturer warranty.",
+      "Direct distribution relationships with Grohe, Ideal Standard, Villeroy & Boch, Roca, Geberit, Ariston, and Coleman CTIL. Zero counterfeits—every product carries official warranty backing.",
     href: "/brands",
-    linkLabel: "Explore Our Partner Brands →",
+    linkLabel: "View Partner Brands →",
   },
   {
     icon: Store,
-    title: "Lagos Showroom Access",
+    title: "Physical Lagos Showrooms",
     description:
-      "Walk into our Dopemu-Agege or Alimosho (LASU-Isheri Road) showrooms Monday–Saturday (8am–6pm) to inspect finishes, flush systems, and cable gauges firsthand before buying.",
+      "Inspect finishes, ceramic glazes, flush valves, and cable gauges firsthand at our Dopemu-Agege and Alimosho (LASU-Isheri Rd) showrooms, open Monday–Saturday.",
     href: "/dopemu-showroom",
-    linkLabel: "Visit Our Showrooms →",
+    linkLabel: "Showroom Locations →",
   },
   {
     icon: Truck,
-    title: "Fast Lagos & Nationwide Delivery",
+    title: "Scheduled Site Logistics",
     description:
-      "24–48 hour site delivery across Lagos Mainland and Island (Lekki, Victoria Island, Ikoyi, Ikeja, Agege) and secure nationwide logistics to Abuja, Port Harcourt, Ibadan, and beyond.",
+      "24–48 hour dispatch across Lagos Mainland and Island, with secure, insured transit for commercial consignments across Abuja, Port Harcourt, and nationwide.",
     href: "/delivery-installation",
-    linkLabel: "See Delivery Coverage →",
+    linkLabel: "Logistics Details →",
   },
   {
     icon: Wrench,
-    title: "Certified Installation Support",
+    title: "On-Site Installation Support",
     description:
-      "Beyond supplying materials, our experienced plumbing, sanitary, tiling, and electrical technicians handle complete first-fix and second-fix on-site installation.",
+      "Beyond supply, our qualified technicians undertake full mechanical plumbing, sanitary ware mounting, water heater commissioning, and architectural tiling.",
     href: "/delivery-installation",
-    linkLabel: "Learn About Installation →",
+    linkLabel: "Installation Services →",
   },
   {
     icon: BadgePercent,
-    title: "Trade & Bulk Contractor Pricing",
+    title: "Contractor Trade Pricing",
     description:
-      "Dedicated volume discounts, staged site call-off schedules, and rapid proforma invoicing for civil contractors, MEP engineers, estate developers, and procurement teams.",
+      "Structured volume terms, phased delivery call-offs, and rapid proforma quotes for developers, MEP consultants, and main contractors working against strict budgets.",
     href: "/bulk-supply-contractors",
-    linkLabel: "Get Contractor Trade Pricing →",
+    linkLabel: "Contractor Supply →",
   },
   {
     icon: Building2,
-    title: "Proven Project Supply Experience",
+    title: "30+ Project Deliveries",
     description:
-      "Trusted on 30+ major institutional, hospital, commercial, and residential developments—including LASU Senate Building, CBN, FIRS, Lagos HOMS, and Maternal & Child Hospitals.",
+      "Proven supply history spanning state university senate complexes, central bank branches, maternal hospitals, high-rise residential estates, and corporate headquarters.",
     href: "/projects",
-    linkLabel: "View 30+ Completed Projects →",
+    linkLabel: "Project Portfolio →",
   },
 ];
 
 export function WhyBarryham({ className = "" }: { className?: string }) {
   return (
     <section className={`py-20 px-6 lg:px-12 bg-white border-y border-navy/5 ${className}`}>
-      <div className="max-w-[1440px] mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="font-ui text-xs font-bold uppercase tracking-[0.25em] text-gold block mb-3">
-            Why Choose Barryham Int&apos;l Ltd
-          </span>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-navy mb-4">
-            Built for Homeowners, Developers &amp; Contractors Who Refuse Substandard Materials
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.25em] text-gold mb-2">
+            Why Work With BIL
+          </p>
+          <h2 className="font-heading font-semibold text-2xl md:text-3xl text-navy mb-3">
+            Distributor Precision &amp; Installation Integrity
           </h2>
-          <p className="font-ui text-charcoal/75 text-base leading-relaxed">
-            Whether you are fitting out a single family bathroom in Lagos or procuring sanitary, plumbing, and electrical packages for a 15-floor estate, here is why leading builders choose BIL.
+          <p className="font-ui text-xs md:text-sm text-charcoal/70 leading-relaxed">
+            From luxury private residences to large-scale institutional developments, Barryham provides genuine materials, technical certainty, and accountable on-site delivery.
           </p>
         </div>
 
@@ -82,20 +82,22 @@ export function WhyBarryham({ className = "" }: { className?: string }) {
             return (
               <div
                 key={pillar.title}
-                className="bg-offwhite/70 hover:bg-white rounded-2xl p-7 border border-navy/10 hover:border-gold/50 shadow-sm hover:shadow-md transition-all flex flex-col"
+                className="bg-offwhite/60 hover:bg-white rounded-xl p-6 border border-navy/5 hover:border-gold/40 shadow-sm transition-all flex flex-col justify-between"
               >
-                <div className="w-12 h-12 rounded-xl bg-navy text-gold flex items-center justify-center mb-5">
-                  <Icon size={22} />
+                <div>
+                  <div className="w-10 h-10 rounded-lg bg-navy/5 text-navy flex items-center justify-center mb-4">
+                    <Icon size={19} className="text-gold" />
+                  </div>
+                  <h3 className="font-heading font-semibold text-lg text-navy mb-2">
+                    {pillar.title}
+                  </h3>
+                  <p className="font-ui text-xs md:text-sm text-charcoal/75 leading-relaxed mb-4">
+                    {pillar.description}
+                  </p>
                 </div>
-                <h3 className="font-heading font-semibold text-xl text-navy mb-2.5">
-                  {pillar.title}
-                </h3>
-                <p className="font-ui text-sm text-charcoal/80 leading-relaxed mb-5 flex-grow">
-                  {pillar.description}
-                </p>
                 <Link
                   href={pillar.href}
-                  className="font-ui text-xs font-semibold text-navy hover:text-gold uppercase tracking-wider transition-colors"
+                  className="font-ui text-xs font-semibold text-gold hover:text-navy uppercase tracking-wider transition-colors inline-block pt-2"
                 >
                   {pillar.linkLabel}
                 </Link>

@@ -71,13 +71,7 @@ export function ProductCard({ product }: { product: Product }) {
 
         {/* Availability Badge */}
         <div className="absolute top-3 left-3 z-20 flex flex-wrap gap-1.5">
-          <span
-            className={`font-ui text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm ${
-              product.availability === "In Stock"
-                ? "bg-emerald-600 text-white"
-                : "bg-amber-500 text-white"
-            }`}
-          >
+          <span className="font-ui text-[9px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm bg-white/95 text-navy border border-navy/10">
             {product.availability}
           </span>
         </div>
@@ -135,10 +129,10 @@ export function ProductCard({ product }: { product: Product }) {
               }
               title="Enquire on WhatsApp"
               aria-label={`Enquire about ${product.name} on WhatsApp`}
-              className="min-h-[40px] px-3 rounded-full bg-[#25D366]/10 hover:bg-[#25D366] text-[#1ebe5d] hover:text-white font-ui text-xs font-semibold flex items-center gap-1.5 transition-colors"
+              className="min-h-[38px] px-3 rounded-full bg-navy/5 hover:bg-navy text-navy hover:text-white font-ui text-xs font-semibold flex items-center gap-1.5 transition-colors border border-navy/10 hover:border-navy"
             >
-              <MessageCircle size={15} />
-              <span className="hidden sm:inline">Enquire</span>
+              <MessageCircle size={14} className="text-gold" />
+              <span className="hidden sm:inline">WhatsApp</span>
             </a>
 
             <button
