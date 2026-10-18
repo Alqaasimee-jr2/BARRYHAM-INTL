@@ -5,6 +5,9 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { CartProvider } from "@/context/CartContext";
 import { FloatingCart } from "@/components/FloatingCart";
+import { StickyWhatsApp } from "@/components/StickyWhatsApp";
+import { AnalyticsProvider } from "@/components/AnalyticsProvider";
+import { getLocalBusinessSchema } from "@/lib/schema";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -20,35 +23,42 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://barryham.site"),
-  title: "Barryham Int'l Ltd | Premium Sanitary Ware & Electrical Fittings",
-  description: "Direct distributor for Ideal Standard, Armitage Shanks, Geberit, Grohe, Kohler, Reigner, Roca, Vado, Hansgrohe, Ariston Water Heater, and Coleman CTIL across Lagos and Nigeria.",
+  title:
+    "Premium Sanitary Ware, Plumbing & Electrical Fittings in Lagos | Barryham Int’l Ltd",
+  description:
+    "Direct distributor for Ideal Standard, Armitage Shanks, Geberit, Grohe, Kohler, Reigner, Roca, Vado, Hansgrohe, Ariston Water Heater, and Coleman CTIL across Lagos and Nigeria.",
   keywords: [
+    "sanitary ware supplier Lagos",
+    "plumbing fittings Lagos",
+    "electrical fittings Lagos",
+    "bathroom fittings Nigeria",
+    "water heaters Nigeria",
     "Ideal Standard Nigeria",
     "Armitage Shanks Lagos",
-    "Geberit distributor",
+    "Geberit distributor Nigeria",
     "Grohe taps Nigeria",
-    "Kohler sanitary ware",
+    "Villeroy and Boch Lagos",
     "Ariston water heater Nigeria",
-    "Roca sanitary fittings",
-    "Vado brassware Lagos",
-    "sanitary ware supplier Lagos",
-    "Barryham International",
+    "Coleman cables distributor Lagos",
+    "Barryham International Limited",
   ],
-  authors: [{ name: "Barryham Int'l Ltd" }],
+  authors: [{ name: "Barryham International Limited" }],
   alternates: {
-    canonical: "https://barryham.site",
+    canonical: "https://barryham.site/",
   },
   openGraph: {
-    title: "Barryham Int'l Ltd | Premium Sanitary Ware & Building Materials",
-    description: "Official direct supplier for leading European & global sanitary, plumbing, and electrical manufacturers in Nigeria.",
-    url: "https://barryham.site",
-    siteName: "Barryham Int'l Ltd",
+    title:
+      "Premium Sanitary Ware, Plumbing & Electrical Fittings in Lagos | Barryham Int’l Ltd",
+    description:
+      "Official direct supplier for leading European & global sanitary, plumbing, water heating, and electrical manufacturers in Lagos and Nigeria.",
+    url: "https://barryham.site/",
+    siteName: "Barryham International Limited",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Barryham Int'l Ltd Official Distributor",
+        alt: "Barryham International Limited — Sanitary Ware, Plumbing & Electrical Fittings Lagos",
       },
     ],
     locale: "en_NG",
@@ -56,8 +66,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Barryham Int'l Ltd | Premium Sanitary Ware & Building Materials",
-    description: "Official direct supplier for leading European & global sanitary, plumbing, and electrical manufacturers in Nigeria.",
+    title:
+      "Premium Sanitary Ware, Plumbing & Electrical Fittings in Lagos | Barryham Int’l Ltd",
+    description:
+      "Official direct supplier for leading European & global sanitary, plumbing, and electrical manufacturers in Nigeria.",
     images: ["/og-image.png"],
   },
   icons: {
@@ -71,9 +83,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
 };
@@ -83,42 +95,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "Barryham Int'l Ltd",
-    description: "Direct distributor & installer for Ideal Standard, Armitage Shanks, Geberit, Grohe, Kohler, Reigner, Roca, Vado, Hansgrohe, Ariston Water Heater, and Coleman CTIL.",
-    url: "https://barryham.site",
-    email: "bihl.sales@gmail.com",
-    telephone: ["+2348034750270", "+2348084446319", "+2349090381508"],
-    sameAs: [
-      "https://www.instagram.com/barryhamintl/"
-    ],
-    location: [
-      {
-        "@type": "Place",
-        "name": "Main Showroom",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Block B, Suite 3, Association Plaza, Cement Bus Stop, Lagos-Abeokuta Express Way, Dopemu",
-          "addressLocality": "Agege",
-          "addressRegion": "Lagos",
-          "addressCountry": "NG"
-        }
-      },
-      {
-        "@type": "Place",
-        "name": "Alimosho Office",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Suite 1, Petrocam Gas Station, Odo Eran/Hotel Bus-stop, Along LASU-Isheri/Igando Road, Alimosho",
-          "addressLocality": "Igando",
-          "addressRegion": "Lagos",
-          "addressCountry": "NG"
-        }
-      }
-    ]
-  };
+  const jsonLd = getLocalBusinessSchema();
 
   return (
     <html lang="en">
@@ -128,14 +105,16 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${playfair.variable} ${poppins.variable} antialiased bg-offwhite text-charcoal min-h-screen flex flex-col`}>
+      <body
+        className={`${playfair.variable} ${poppins.variable} antialiased bg-offwhite text-charcoal min-h-screen flex flex-col`}
+      >
         <CartProvider>
+          <AnalyticsProvider />
           <Nav />
-          <div className="flex-grow">
-            {children}
-          </div>
+          <div className="flex-grow">{children}</div>
           <Footer />
           <FloatingCart />
+          <StickyWhatsApp />
         </CartProvider>
       </body>
     </html>

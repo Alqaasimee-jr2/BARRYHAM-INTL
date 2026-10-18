@@ -18,19 +18,20 @@ export function FloatingCart() {
             initial={{ opacity: 0, scale: 0.8, y: 50 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 50 }}
-            className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-40"
+            className="fixed bottom-20 right-4 md:bottom-24 md:right-6 z-40"
           >
             <button
               onClick={() => setIsDrawerOpen(true)}
-              className="bg-navy text-white p-4 rounded-full shadow-xl hover:bg-gold hover:shadow-2xl transition-all duration-300 relative min-h-[64px] min-w-[64px] flex items-center justify-center group"
-              aria-label="Open Quote Request"
+              className="bg-navy text-white px-5 py-3.5 rounded-full shadow-xl hover:bg-gold hover:shadow-2xl transition-all duration-300 relative min-h-[52px] flex items-center justify-center gap-2.5 group border border-white/15"
+              aria-label="Open Quote Request List"
             >
-              <ShoppingCart size={28} className="group-hover:scale-110 transition-transform" />
-              
-              {/* Badge */}
-              <div className="absolute -top-2 -right-2 bg-gold text-white font-ui font-bold text-xs h-6 w-6 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+              <ShoppingCart size={20} className="group-hover:scale-110 transition-transform" />
+              <span className="font-ui font-semibold text-xs uppercase tracking-wider">
+                Quote List
+              </span>
+              <span className="bg-gold text-white font-ui font-bold text-xs h-6 min-w-[24px] px-1.5 rounded-full flex items-center justify-center">
                 {itemCount}
-              </div>
+              </span>
             </button>
           </motion.div>
         )}

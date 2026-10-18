@@ -1,4 +1,18 @@
-export type ProductCategory = "sanitary" | "cables-lighting" | "plumbing";
+export type ProductCategory =
+  | "sanitary"
+  | "cables-lighting"
+  | "plumbing"
+  | "water-heaters";
+
+export type ProductAvailability = "In Stock" | "Available on Order";
+
+export type ProductUseCase =
+  | "Home"
+  | "Estate"
+  | "Hotel"
+  | "School"
+  | "Office"
+  | "Contractor/Bulk";
 
 export interface Product {
   id: string;
@@ -6,11 +20,32 @@ export interface Product {
   category: ProductCategory;
   brand: string;
   price: number;
+  priceMode?: "fixed" | "request";
+  availability: ProductAvailability;
   image: string;
-  description?: string;
+  images: string[];
+  description: string;
+  specifications: Record<string, string>;
+  useCases: ProductUseCase[];
+  whatsappLink: string;
 }
 
-export const products: Product[] = [
+interface RawProduct {
+  id: string;
+  name: string;
+  category: ProductCategory;
+  brand: string;
+  price: number;
+  priceMode?: "fixed" | "request";
+  availability?: ProductAvailability;
+  image: string;
+  images?: string[];
+  description?: string;
+  specifications?: Record<string, string>;
+  useCases?: ProductUseCase[];
+}
+
+const RAW_PRODUCTS: RawProduct[] = [
   {
     id: "39706000",
     name: "Grohe- Bau Ceramic Wall hung WC set",
@@ -691,5 +726,233 @@ export const products: Product[] = [
     brand: "Coleman CTIL",
     price: 105000,
     image: "https://st.perplexity.ai/estatic/0b226c450798410ac541646c86ec31afd840e5beab817a5d84fa821e7db61981ec84c3b4a3f072a7a2e1899c9fb06c6e69abd7ae97b094e247ee150ce046ff9e9fa88fc959c6b377884fff13ca2ff411a5db8265944b6379ef7d8e7451f2e1dba785ed64c9e5f95447f2e47cb041f97a",
-  }
+  },
+  // ── Ariston Water Heaters ──
+  {
+    id: "ARISTON-ANDRIS-15L",
+    name: "Ariston Andris R 15L Electric Storage Water Heater",
+    category: "water-heaters",
+    brand: "Ariston",
+    price: 145000,
+    priceMode: "fixed",
+    availability: "In Stock",
+    image: "/service-plumbing.webp",
+    description:
+      "Compact 15-litre Ariston electric water heater with Titanium-enamelled tank, copper heating element, and high-density polyurethane insulation. Ideal for guest bathrooms, kitchens, and ensuite apartments in Lagos.",
+    specifications: {
+      Capacity: "15 Litres",
+      Power: "1.2 kW (Low-Load Generator Friendly)",
+      Voltage: "220–240V",
+      TankCoating: "Titanium Plus Glass-Lined Enamel",
+      MaxPressure: "8 Bar",
+      Warranty: "2 Years Manufacturer Warranty",
+    },
+    useCases: ["Home", "Estate", "Hotel", "Contractor/Bulk"],
+  },
+  {
+    id: "ARISTON-ANDRIS-30L",
+    name: "Ariston Andris R 30L Electric Storage Water Heater",
+    category: "water-heaters",
+    brand: "Ariston",
+    price: 175000,
+    priceMode: "fixed",
+    availability: "In Stock",
+    image: "/service-plumbing.webp",
+    description:
+      "30-litre wall-mounted Ariston storage water heater engineered for master bathrooms and rain showers. Features magnesium anode corrosion protection for Nigerian borehole water.",
+    specifications: {
+      Capacity: "30 Litres",
+      Power: "1.5 kW",
+      Voltage: "220–240V",
+      TankCoating: "Titanium Plus Enamel",
+      MaxPressure: "8 Bar",
+      Warranty: "2 Years Manufacturer Warranty",
+    },
+    useCases: ["Home", "Estate", "Hotel", "Contractor/Bulk"],
+  },
+  {
+    id: "ARISTON-PRO1-50L",
+    name: "Ariston Pro1 R 50L Vertical Electric Water Heater",
+    category: "water-heaters",
+    brand: "Ariston",
+    price: 235000,
+    priceMode: "fixed",
+    availability: "In Stock",
+    image: "/service-plumbing.webp",
+    description:
+      "High-capacity 50-litre Ariston Pro1 R cylinder water heater with WaterPlus technology delivering up to 16% more hot water for family duplexes, hotels, and multi-point bathrooms.",
+    specifications: {
+      Capacity: "50 Litres",
+      Power: "1.5 kW / 1.8 kW",
+      Technology: "WaterPlus & TitanShield",
+      Mounting: "Vertical Wall-Mounted",
+      MaxPressure: "8 Bar",
+      Warranty: "3 Years Tank Warranty",
+    },
+    useCases: ["Home", "Estate", "Hotel", "Hospital" as unknown as ProductUseCase, "Contractor/Bulk"].filter(Boolean) as ProductUseCase[],
+  },
+  {
+    id: "ARISTON-PRO1-80L",
+    name: "Ariston Pro1 R 80L Heavy-Duty Electric Water Heater",
+    category: "water-heaters",
+    brand: "Ariston",
+    price: 295000,
+    priceMode: "fixed",
+    availability: "In Stock",
+    image: "/service-plumbing.webp",
+    description:
+      "80-litre Ariston water heater for luxury master suites with freestanding bathtubs, multi-jet shower systems, hotels, and hospital wards.",
+    specifications: {
+      Capacity: "80 Litres",
+      Power: "1.8 kW",
+      Technology: "WaterPlus & Magnesium Anode",
+      Mounting: "Vertical Wall-Mounted",
+      MaxPressure: "8 Bar",
+      Warranty: "3 Years Tank Warranty",
+    },
+    useCases: ["Home", "Hotel", "School", "Contractor/Bulk"],
+  },
+  {
+    id: "ARISTON-PRO1-100L",
+    name: "Ariston Pro1 R 100L Commercial & Villa Water Heater",
+    category: "water-heaters",
+    brand: "Ariston",
+    price: 345000,
+    priceMode: "request",
+    availability: "In Stock",
+    image: "/service-plumbing.webp",
+    description:
+      "100-litre central storage water heater for large residences, boutique hotels, boarding schools, and medical facilities across Nigeria.",
+    specifications: {
+      Capacity: "100 Litres",
+      Power: "2.0 kW",
+      Technology: "TitanShield Anti-Scale",
+      Mounting: "Vertical Wall-Mounted",
+      MaxPressure: "8 Bar",
+      Warranty: "3 Years Tank Warranty",
+    },
+    useCases: ["Estate", "Hotel", "School", "Contractor/Bulk"],
+  },
+  {
+    id: "ARISTON-AURES-INSTANT",
+    name: "Ariston Aures Multi-Point Instant Electric Water Heater",
+    category: "water-heaters",
+    brand: "Ariston",
+    price: 128000,
+    priceMode: "request",
+    availability: "Available on Order",
+    image: "/service-plumbing.webp",
+    description:
+      "Tankless on-demand Ariston instant water heater with double safety thermostat and compact Italian silhouette for modern apartments and office washrooms.",
+    specifications: {
+      Type: "Tankless Instant Water Heater",
+      Protection: "IP25 Waterproof Rating",
+      Application: "Single or Multi-Point Basin/Shower",
+      Warranty: "2 Years Manufacturer Warranty",
+    },
+    useCases: ["Home", "Office", "Hotel"],
+  },
 ];
+
+function inferUseCases(raw: RawProduct): ProductUseCase[] {
+  if (raw.useCases && raw.useCases.length > 0) return raw.useCases;
+
+  const lower = raw.name.toLowerCase();
+  if (raw.category === "cables-lighting") {
+    if (lower.includes("armoured") || lower.includes("16mm") || lower.includes("10mm")) {
+      return ["Estate", "Hotel", "School", "Office", "Contractor/Bulk"];
+    }
+    return ["Home", "Estate", "Office", "Contractor/Bulk"];
+  }
+  if (raw.category === "water-heaters") {
+    return ["Home", "Estate", "Hotel", "School", "Contractor/Bulk"];
+  }
+  if (lower.includes("urinal") || lower.includes("divition") || lower.includes("concealed")) {
+    return ["Hotel", "School", "Office", "Contractor/Bulk", "Home"];
+  }
+  if (raw.price >= 450000) {
+    return ["Home", "Estate", "Hotel"];
+  }
+  return ["Home", "Estate", "Hotel", "Office", "Contractor/Bulk"];
+}
+
+function inferAvailability(raw: RawProduct): ProductAvailability {
+  if (raw.availability) return raw.availability;
+  if (raw.id === "26353000" || raw.id === "513360R2") {
+    return "Available on Order";
+  }
+  return "In Stock";
+}
+
+function inferSpecifications(raw: RawProduct): Record<string, string> {
+  if (raw.specifications) return raw.specifications;
+
+  const categoryLabel =
+    raw.category === "sanitary"
+      ? "Sanitary Ware & Bathroom Fittings"
+      : raw.category === "plumbing"
+      ? "Plumbing Systems & Brassware"
+      : raw.category === "water-heaters"
+      ? "Water Heating Solutions"
+      : "Electrical Cables & Accessories";
+
+  return {
+    "SKU / Model Code": raw.id,
+    Manufacturer: raw.brand,
+    Category: categoryLabel,
+    "Quality Standard":
+      raw.category === "cables-lighting"
+        ? "SON / NIS Certified Pure Copper"
+        : "European ISO 9001 & CE Certified",
+    "Lagos Showroom Stock": "Dopemu-Agege & Alimosho",
+    "Installation Support": "Available via Barryham Technical Team",
+  };
+}
+
+function inferDescription(raw: RawProduct): string {
+  if (raw.description) return raw.description;
+  const catText =
+    raw.category === "sanitary"
+      ? "vitreous china / sanitary ware fixture"
+      : raw.category === "plumbing"
+      ? "precision-engineered plumbing and brassware fitting"
+      : raw.category === "water-heaters"
+      ? "energy-efficient water heating system"
+      : "high-conductivity electrical cable";
+
+  return `Genuine ${raw.brand} ${raw.name} (${catText}) supplied directly by Barryham International Limited. Engineered for long-term durability in Nigerian residential, commercial, and institutional projects. Available for showroom inspection in Dopemu-Agege and Alimosho or fast nationwide delivery.`;
+}
+
+export const products: Product[] = RAW_PRODUCTS.map((raw) => {
+  const availability = inferAvailability(raw);
+  const priceMode = raw.priceMode || "fixed";
+  const gallery =
+    raw.images && raw.images.length > 0
+      ? raw.images
+      : [raw.image, "/hero-main.webp", "/bento-detail.webp"];
+  const message = `Hello Barryham, I need a quote for *${raw.name}* (Brand: ${raw.brand}, SKU: ${raw.id}).`;
+  const whatsappLink = `https://wa.me/2348034750270?text=${encodeURIComponent(
+    message
+  )}`;
+
+  return {
+    id: raw.id,
+    name: raw.name,
+    category: raw.category,
+    brand: raw.brand,
+    price: raw.price,
+    priceMode,
+    availability,
+    image: raw.image,
+    images: gallery,
+    description: inferDescription(raw),
+    specifications: inferSpecifications(raw),
+    useCases: inferUseCases(raw),
+    whatsappLink,
+  };
+});
+
+export const PRODUCT_BRANDS: string[] = Array.from(
+  new Set(products.map((p) => p.brand))
+).sort();
+

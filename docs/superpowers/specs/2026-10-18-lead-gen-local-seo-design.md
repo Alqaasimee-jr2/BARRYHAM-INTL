@@ -1,20 +1,22 @@
 # Barryham Int'l Ltd — Lead-Generation & Local-SEO Upgrade Design Spec
 
 **Date:** 2026-10-18  
-**Project:** Barryham International Limited (`https://barryham.site`)  
-**Scope:** Client-facing only conversion optimization, local SEO, structured schema, 11 new landing pages, expanded product catalogue, credibility pages, conversion-focused blog, and GA4/GTM event tracking.
+**Project:** Barryham International Limited (`https://barryham.site/`)  
+**Scope:** Client-facing conversion optimization, local SEO, structured schema, 11 new landing pages, expanded product catalogue, credibility pages, conversion-focused blog, and Vercel Analytics event tracking.
 
 ---
 
 ## 1. Goals & Constraints
 
-- **Primary Goal:** Turn Barryham's website into a measurable lead-generation and local-SEO machine in Lagos and across Nigeria, built in strict priority order.
+- **Primary Goal:** Turn `https://barryham.site/` into a measurable lead-generation and local-SEO machine in Lagos and across Nigeria, built in strict priority order.
 - **Client-Facing Only:** No `/admin` dashboard or login-gated routes. All pages are public, fast, and conversion-focused.
-- **No External Account Blockers:**
-  - Remove `output: 'export'` from `next.config.mjs` so Next.js 14 App Router supports server routes (`/api/leads`, `/api/contact`) and native image optimization.
-  - Quote submissions on `/request-quote` send structured data to `/api/leads` (which supports optional Supabase `leads` insert and webhook/email notification when environment variables are configured) AND route the formatted quote directly to Barryham's WhatsApp (`+234 803 475 0270`) while displaying the on-screen auto-reply: *"Thank you. Our team will contact you shortly."*
+- **100% WhatsApp-Routed Lead Capture:**
+  - Every enquiry that needs to reach the Barryham team (`/request-quote`, `/contact`, product enquiries, service enquiries, cart checkout) is formatted into a clean, structured message and routed directly to Barryham's WhatsApp (`+234 803 475 0270`), while displaying the on-screen auto-reply confirmation: *"Thank you. Our team will contact you shortly."*
+- **Vercel Built-In Analytics:**
+  - Analytics and conversion events (`whatsapp_click`, `quote_submitted`, `call_click`, `product_enquiry`) are powered by Vercel's built-in Analytics (`@vercel/analytics`), plus Google Search Console verification metadata support.
 - **Consistent NAP (Name, Address, Phone) & Hours:**
   - **Legal Name:** Barryham International Limited (Barryham Int'l Ltd)
+  - **Website URL:** `https://barryham.site/`
   - **Primary WhatsApp & Phone:** `+234 803 475 0270` (`0803 475 0270`)
   - **Additional Phones:** `+234 808 444 6319` (`0808 444 6319`), `+234 909 038 1508` (`0909 038 1508`)
   - **Email:** `bihl.sales@gmail.com`
@@ -29,20 +31,20 @@
 ### Phase 1: Conversion Fixes & Consistent Contact Details (Directives 1 & 3)
 
 1. **Centralized Business Config (`lib/constants.ts`):**
-   - Exports canonical NAP, WhatsApp links, showroom coordinates/map URLs, opening hours, and trust badge items.
+   - Exports canonical NAP, WhatsApp links (`https://wa.me/2348034750270?text=Hello%20Barryham,%20I%20need%20a%20quote%20for...`), showroom coordinates/map URLs, opening hours, and the 4 core trust badges.
 2. **Global Sticky WhatsApp Button (`components/StickyWhatsApp.tsx`):**
-   - Rendered in `app/layout.tsx` on every page (prominent on mobile and desktop).
+   - Rendered in `app/layout.tsx` on every page (especially mobile).
    - Links to `https://wa.me/2348034750270?text=Hello%20Barryham,%20I%20need%20a%20quote%20for...`
    - Fires `whatsapp_click` conversion event on click.
    - Coordinated with `components/FloatingCart.tsx` so floating buttons stack cleanly without overlapping.
 3. **Inline Section WhatsApp CTAs & Trust Badges (`components/SectionWhatsAppCTA.tsx`, `components/TrustBadges.tsx`):**
    - Added after every product section, service section, and blog article.
-   - Displays the 4 core trust badges near CTAs: *"Genuine brands"*, *"Lagos delivery"*, *"Installation support"*, *"Trade supply available"*.
+   - Displays the 4 trust badges near CTAs: *"Genuine brands"*, *"Lagos delivery"*, *"Installation support"*, *"Trade supply available"*.
 4. **Header, Footer & Contact Page NAP Upgrade (`components/Nav.tsx`, `components/Footer.tsx`, `app/contact/page.tsx`):**
-   - `Nav.tsx`: Top info bar showing phone numbers, WhatsApp, email, showrooms (Dopemu & Alimosho), and opening hours (`Mon–Sat: 8am–6pm`), plus a high-contrast **Request a Quote** CTA button and sticky WhatsApp action.
+   - `Nav.tsx`: Top info bar showing phone numbers, WhatsApp, email, showrooms (Dopemu & Alimosho), and opening hours (`Mon–Sat: 8am–6pm`), plus a **Request a Quote** CTA button and WhatsApp action.
    - `Footer.tsx`: Complete, non-duplicated NAP with both full showroom addresses, all 3 clickable `tel:` numbers, WhatsApp number, email, opening hours, and links to all new SEO landing pages.
-   - `app/contact/page.tsx`: Displays complete NAP + opening hours, Google Maps embeds + Google Business Profile directions links, and direct WhatsApp/Request Quote paths.
-5. **Request a Quote Page (`app/request-quote/page.tsx` & `app/api/leads/route.ts`):**
+   - `app/contact/page.tsx`: Displays complete NAP + opening hours, Google Maps embeds + Google Business Profile directions links, and routes contact form submissions directly through WhatsApp with on-screen confirmation.
+5. **Request a Quote Page (`app/request-quote/page.tsx`):**
    - Fields (strictly limited to directive):
      - Full name (required)
      - Phone/WhatsApp number (required)
@@ -50,11 +52,11 @@
      - Products needed (required — pre-filled if user has items in their quote cart)
      - Location (required)
      - Budget range (optional)
-     - Message / specification upload (optional file input + notes)
+     - Message / specification upload (optional file attachment name/reference + notes)
    - Submission flow:
-     - POSTs to `/api/leads` (inserts into Supabase `leads` table if `NEXT_PUBLIC_SUPABASE_URL` & `SUPABASE_SERVICE_ROLE_KEY`/`NEXT_PUBLIC_SUPABASE_ANON_KEY` are set, and forwards to email/webhook if configured).
-     - Fires `quote_submitted` conversion event.
-     - Shows immediate confirmation state: *"Thank you. Our team will contact you shortly."* with a 1-click button (and optional auto-open) to send the formatted quote straight to Barryham's WhatsApp.
+     - Fires `quote_submitted` conversion event via Vercel Analytics.
+     - Displays immediate confirmation auto-reply: *"Thank you. Our team will contact you shortly."*
+     - Opens WhatsApp (`https://wa.me/2348034750270?text=...`) with the formatted quote details ready to send to the Barryham team (with a manual re-open button in the confirmation screen in case popups are blocked).
 
 ---
 
@@ -67,7 +69,7 @@
      - Contact (`/contact`): `Contact Barryham Int’l Ltd | Sanitary Ware & Electrical Fittings Lagos`
      - Every other page receives a unique, keyword-targeted `<title>` and `description`.
 2. **Structured JSON-LD Schema (`lib/schema.ts`):**
-   - `LocalBusiness` schema on Home (`/`) and Contact (`/contact`) with exact fields (`@context`, `@type`, `name`, `url`, `telephone`, `address`, `openingHours`, `sameAs`, plus `department`/`location` for Dopemu and Alimosho showrooms).
+   - `LocalBusiness` schema on Home (`/`) and Contact (`/contact`) matching the exact directive format (`@context`, `@type`, `name: "Barryham International Limited"`, `url: "https://barryham.site/"`, `telephone`, `address`, `openingHours`, `sameAs`).
    - `Product` schema on `/products/[id]` and product listings.
    - `FAQPage` schema on `/faq` and all 11 landing pages.
    - `BreadcrumbList` schema on all inner pages.
@@ -84,26 +86,26 @@
 
 1. **Enhanced Product Schema (`data/products.ts`):**
    - Categories expanded to support: `"sanitary"`, `"plumbing"`, `"cables-lighting"`, `"water-heaters"`.
-   - Fields on each `Product`:
+   - Helper enricher providing every product with:
      - `id`, `name`, `category`, `brand`
-     - `price` (numeric NGN) and `priceMode?: "fixed" | "request"` (supports displaying exact Naira price or `"Request price"`)
+     - `price` (numeric NGN) and `priceMode?: "fixed" | "request"`
      - `availability`: `"In Stock" | "Low Stock" | "Available on Order"`
      - `description`: concise commercial/residential summary
      - `specifications`: `Record<string, string>` (SKU, Brand, Category, Application, Warranty, Standards)
      - `useCases`: `("Home" | "Estate" | "Hotel" | "School" | "Office" | "Contractor/Bulk")[]`
      - `image` and `images?: string[]`
-   - Add **Ariston Water Heaters** (10L, 15L, 30L, 50L, 80L, 100L, Instant & Commercial units) and additional electrical accessories (switches, sockets, distribution boards, LED panels) so all landing pages have rich product inventories.
+   - Add **Ariston Water Heaters** (Andris R 10L/15L/30L, Pro1 R 50L/80L/100L, Aures Instant Water Heater, Industrial/Hotel 200L Floor-Standing) so `/water-heaters-nigeria` and the main catalogue have dedicated water heater SKUs.
 2. **Catalogue Filtering (`app/products/page.tsx`):**
    - Public, zero-login browsing.
-   - Filters for:
+   - 5 Filters:
      - **Category** (All, Sanitary Ware, Plumbing Fittings, Electrical & Cables, Water Heaters)
-     - **Brand** (Grohe, Ideal Standard, Villeroy & Boch, Varmora, Sanit, Coleman CTIL, Ariston, etc.)
+     - **Brand** (All brands dynamically derived)
      - **Price Range** (All, Under ₦100k, ₦100k–₦300k, ₦300k–₦600k, Above ₦600k, Request Price)
      - **Availability** (All, In Stock, Available on Order)
      - **Use Case** (All, Home, Estate, Hotel, School, Office, Contractor/Bulk)
 3. **Product Detail Page (`app/products/[id]/page.tsx`):**
    - `Product` + `BreadcrumbList` JSON-LD schema.
-   - Multi-photo gallery viewer (with product view angles / finish details).
+   - Multi-photo gallery viewer.
    - Structured Specifications table.
    - Delivery & installation information block (Lagos 24–48hr dispatch, nationwide delivery, certified installation support).
    - Trust badges + prominent **“Chat on WhatsApp to order”** button firing `product_enquiry` and `whatsapp_click`.
@@ -145,10 +147,10 @@
 
 ---
 
-### Phase 5: Conversion-Focused Blog & Analytics Tracking (Directives 6 & 7)
+### Phase 5: Conversion-Focused Blog & Vercel Analytics Tracking (Directives 6 & 7)
 
 1. **Content System (`data/blog.ts`, `app/blog/page.tsx`, `app/blog/[slug]/page.tsx`):**
-   - Centralize articles in `data/blog.ts` (structured data format ready for headless CMS or Supabase synchronization without touching UI code).
+   - Centralize articles in `data/blog.ts` so adding or editing an article only requires adding a simple entry in `data/blog.ts`.
    - Each article includes: `slug`, `title`, `description`, `category`, `author`, `publishedDate`, `updatedDate`, `readTime`, `relatedCategory`, `relatedLandingPage`, `relatedProductIds`, and conversion-focused content.
    - Supporting internal links baked into articles:
      - `cable-selection-guide` → `/electrical-fittings-lagos`
@@ -160,10 +162,10 @@
      1. **Related Products** grid (live product cards)
      2. **Related Service / Landing Page** card
      3. **WhatsApp CTA** + Trust Badges
-2. **Analytics & Conversion Tracking (`lib/analytics.ts`, `components/AnalyticsProvider.tsx`):**
-   - Supports Google Tag Manager (`NEXT_PUBLIC_GTM_ID`), Google Analytics 4 (`NEXT_PUBLIC_GA_MEASUREMENT_ID`), Plausible (`NEXT_PUBLIC_PLAUSIBLE_DOMAIN`), and Google Search Console meta verification (`NEXT_PUBLIC_GSC_VERIFICATION`).
-   - Global event listener + helper firing the 4 required conversion events:
-     - `whatsapp_click` (automatically tracks clicks on any `wa.me` link across the entire site with page & context metadata)
+2. **Vercel Analytics & Conversion Tracking (`lib/analytics.ts`, `components/AnalyticsProvider.tsx`):**
+   - Integrates Vercel Web Analytics (`@vercel/analytics/react`) in `app/layout.tsx`.
+   - Global click delegate + `trackConversion()` helper firing custom conversion events to Vercel Analytics (`track()`):
+     - `whatsapp_click` (tracks clicks on any `wa.me` link across the site with page & context metadata)
      - `quote_submitted` (fired on `/request-quote` and `/contact` form submissions)
-     - `call_click` (automatically tracks clicks on any `tel:` link across the site)
+     - `call_click` (tracks clicks on any `tel:` link across the site)
      - `product_enquiry` (fired when adding a product to quote or clicking WhatsApp enquiry on a product)

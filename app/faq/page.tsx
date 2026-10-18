@@ -1,64 +1,75 @@
 import type { Metadata } from "next";
+import { getBreadcrumbSchema, getFAQSchema } from "@/lib/schema";
+import { SectionWhatsAppCTA } from "@/components/SectionWhatsAppCTA";
 
 export const metadata: Metadata = {
-  title: "FAQs | Barryham Int'l Ltd",
-  description: "Frequently asked questions about Barryham Int'l Ltd — product sourcing, delivery, installation services, and ordering in Nigeria.",
+  title: "FAQs on Sanitary Ware, Plumbing & Electrical Supply | Barryham Int'l Ltd",
+  description:
+    "Frequently asked questions about Barryham Int'l Ltd — genuine sanitary ware, electrical cables, plumbing fittings, Lagos showrooms, nationwide delivery, and installation.",
+  alternates: {
+    canonical: "https://barryham.site/faq",
+  },
 };
 
 const faqs = [
   {
     question: "What products does Barryham Int'l Ltd supply?",
-    answer: "We supply a curated range of premium building materials including sanitary wares and fittings (WCs, basins, bathtubs, shower enclosures), electrical cables and lighting accessories, and plumbing pipes and fittings. All products are sourced directly from certified manufacturers and European-grade suppliers."
+    answer:
+      "We supply a curated range of premium building materials including sanitary wares and bathroom fittings (WCs, basins, bathtubs, shower enclosures, mixers), SON-certified electrical cables and lighting accessories, plumbing pipes and valves, and Ariston water heaters. All products are sourced directly from certified manufacturers and European-grade suppliers.",
   },
   {
     question: "Do you offer installation services?",
-    answer: "Yes. Beyond supply, Barryham Int'l Ltd provides professional installation services for all product categories we stock. Our trained technicians handle sanitary ware installation, electrical fitting, and plumbing setup for both residential and commercial projects."
+    answer:
+      "Yes. Beyond supply, Barryham Int'l Ltd provides professional installation services across all product categories we stock. Our trained technicians handle sanitary ware installation, electrical fitting, water heater mounting, and plumbing setup for both residential and commercial projects.",
   },
   {
-    question: "How do I place an order?",
-    answer: "The easiest way is to add items to your Quote Request on our website and send the list directly to our team via WhatsApp. You can also call us directly on +234 803 475 0270, +234 808 444 6319, or +234 909 038 1508, or email us at bihl.sales@gmail.com."
+    question: "How do I place an order or request a quote?",
+    answer:
+      "You can use our Request a Quote page, add items to your Quote Cart on our website, or click any 'Chat on WhatsApp' button to send your list directly to our sales desk on +234 803 475 0270. You can also call +234 803 475 0270, +234 808 444 6319, or +234 909 038 1508.",
   },
   {
-    question: "Do you deliver nationwide?",
-    answer: "Yes, we deliver across Nigeria. We have two showrooms in Lagos (Agege and Igando/Alimosho), but we ship products to clients in Abuja, Port Harcourt, Ibadan, and other states. Delivery timelines and logistics costs are confirmed at the time of order."
+    question: "Do you deliver across Lagos and nationwide?",
+    answer:
+      "Yes, we deliver across Lagos within 24–48 hours and dispatch nationwide to Abuja, Port Harcourt, Ibadan, Enugu, Kano, and all 36 states. You can also inspect and pick up orders from our Dopemu/Agege or Igando/Alimosho showrooms.",
   },
   {
     question: "Are your products genuine and certified?",
-    answer: "Absolutely. We are direct representatives of the manufacturers and brands we stock. All products come with manufacturer warranties and certification. We do not deal in counterfeit or substandard goods — this is a cornerstone of our business."
+    answer:
+      "Absolutely. We are direct representatives and authorised suppliers of the brands we stock (Roca, Ideal Standard, Armitage Shanks, Kale, Coleman, Nigerchin, Cutix, Ariston). All products come with manufacturer warranties and certification.",
   },
   {
-    question: "Can I get a bulk or institutional discount?",
-    answer: "Yes. We regularly supply large-scale institutional, government, and commercial projects. For bulk orders, reach out to us directly via WhatsApp or email to discuss pricing, lead times, and payment terms tailored to your project needs."
+    question: "Can I get a bulk or contractor trade discount?",
+    answer:
+      "Yes. We regularly supply large-scale residential estates, hotels, hospitals, government buildings, and commercial projects. Reach out via WhatsApp or our Request a Quote page with your Bill of Quantities (BOQ) for trade and volume pricing.",
   },
   {
-    question: "Where are your showrooms located?",
-    answer: "We have two locations: (1) Block B, Suite 3, Association Plaza, Cement Bus Stop, Lagos-Abeokuta Express Way, Dopemu, Agege, Lagos. (2) Suite 1, Petrocam Gas Station, Odo Eran/Hotel Bus-stop, Along LASU-Isheri/Igando Road, Alimosho, Lagos."
+    question: "Where are your Lagos showrooms located and what are your opening hours?",
+    answer:
+      "We have two Lagos showrooms open Monday to Saturday, 8:00 AM – 6:00 PM: (1) Dopemu/Agege Showroom: Block B, Suite 3, Association Plaza, Cement Bus Stop, Lagos-Abeokuta Express Way, Dopemu, Agege, Lagos. (2) Alimosho/Igando Showroom: Suite 1, Petrocam Gas Station, Odo Eran/Hotel Bus-stop, Along LASU-Isheri/Igando Road, Alimosho, Lagos.",
   },
   {
     question: "How long has Barryham Int'l Ltd been in business?",
-    answer: "Barryham International Limited was established in 2018. In over 7 years of operation, we have successfully completed 30+ projects across government, hospital, residential, and corporate sectors in Nigeria."
-  }
+    answer:
+      "Barryham International Limited was established in 2018 (RC 1521985). In over 7 years of operation, we have completed 30+ major projects across government, hospital, military, residential, and corporate sectors in Nigeria.",
+  },
 ];
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqs.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-};
-
 export default function FAQPage() {
+  const faqJsonLd = getFAQSchema(faqs);
+  const breadcrumbJsonLd = getBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "FAQs", url: "/faq" },
+  ]);
+
   return (
     <main className="flex min-h-screen flex-col bg-offwhite pt-24 pb-32">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       {/* Header */}
@@ -68,7 +79,7 @@ export default function FAQPage() {
             Frequently Asked Questions
           </h1>
           <p className="font-ui text-lg text-offwhite/90">
-            Everything you need to know about our products, services, and how to work with us.
+            Everything you need to know about our genuine building materials, Lagos showrooms, nationwide delivery, and ordering on WhatsApp.
           </p>
         </div>
       </section>
@@ -97,19 +108,13 @@ export default function FAQPage() {
         </div>
 
         {/* Still have questions CTA */}
-        <div className="mt-20 text-center bg-navy text-white rounded-3xl p-12">
-          <h2 className="font-heading font-bold text-3xl mb-4">Still have a question?</h2>
-          <p className="font-ui text-offwhite/80 mb-8 max-w-md mx-auto">
-            Our team is available Monday–Saturday, 8am–6pm. Reach us directly on WhatsApp for the fastest response.
-          </p>
-          <a
-            href="https://wa.me/2348034750270?text=Hello%20Barryham%2C%20I%20have%20a%20question."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-gold hover:bg-gold/90 text-white font-ui font-semibold py-4 px-8 rounded-full transition-colors shadow-md"
-          >
-            Chat on WhatsApp
-          </a>
+        <div className="mt-16">
+          <SectionWhatsAppCTA
+            title="Still have a question?"
+            subtitle="Our team is available Monday–Saturday, 8:00 AM – 6:00 PM. Reach us directly on WhatsApp for the fastest response."
+            whatsappMessage="Hello Barryham, I have a question about your products and services."
+            contextLabel="faq_page_cta"
+          />
         </div>
       </section>
     </main>

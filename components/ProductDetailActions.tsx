@@ -1,73 +1,100 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ArrowRight, ShoppingCart, Check } from "lucide-react";
+import { ShoppingCart, Check, MessageCircle, FileText } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { Product } from "@/data/products";
-import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { trackConversion } from "@/lib/analytics";
 
 interface ProductDetailActionsProps {
   product: Product;
   formattedPrice: string;
 }
 
-export function ProductDetailActions({ product, formattedPrice }: ProductDetailActionsProps) {
+export function ProductDetailActions({
+  product,
+  formattedPrice,
+}: ProductDetailActionsProps) {
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
   const [showSticky, setShowSticky] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show sticky banner after scrolling down 400px
-      if (window.scrollY > 400) {
-        setShowSticky(true);
-      } else {
-        setShowSticky(false);
-      }
+      setShowSticky(window.scrollY > 400);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleAdd = () => {
-    addItem({ id: product.id, name: product.name, price: product.price, qty: 1, image: product.image });
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      qty: 1,
+      image: product.image,
+    });
+    trackConversion("product_enquiry", {
+      action: "add_to_quote_from_detail",
+      sku: product.id,
+      productName: product.name,
+      brand: product.brand,
+    });
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };
 
-  const whatsappMessage = `Hello Barryham, I would like to request a quote for the following product:\n\n*${product.name}*\nBrand: ${product.brand}\nSKU: ${product.id}\nLink: https://barryham.site/products/${product.id}`;
-  const whatsappUrl = buildWhatsAppLink("2348034750270", [], "product", whatsappMessage);
+  const handleWhatsAppClick = () => {
+    trackConversion("product_enquiry", {
+      action: "whatsapp_order_click",
+      sku: product.id,
+      productName: product.name,
+      brand: product.brand,
+    });
+  };
 
   return (
     <>
-      <div className="flex flex-col sm:flex-row gap-4 w-full">
+      <div className="flex flex-col sm:flex-row flex-wrap gap-3.5 w-full">
+        <a
+          href={product.whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={handleWhatsAppClick}
+          className="flex-1 inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-ui font-semibold text-sm tracking-wide rounded-full shadow-md transition-colors duration-300 text-center min-h-[52px]"
+        >
+          <MessageCircle size={19} />
+          Chat on WhatsApp to order
+        </a>
+
         <button
+          type="button"
           onClick={handleAdd}
           disabled={added}
-          className={`flex-1 inline-flex items-center justify-center gap-3 px-8 py-4 font-ui font-semibold text-sm tracking-wide rounded-full transition-colors duration-300 ${
+          className={`flex-1 inline-flex items-center justify-center gap-2.5 px-7 py-4 font-ui font-semibold text-sm tracking-wide rounded-full transition-colors duration-300 min-h-[52px] ${
             added
               ? "bg-gold text-white"
               : "bg-navy text-white hover:bg-gold"
           }`}
         >
-          {added ? "Added to Quote Request" : "Add to Quote Request"}
-          {added ? <Check size={16} /> : <ShoppingCart size={16} />}
+          {added ? "Added to Quote List" : "Add to Quote List"}
+          {added ? <Check size={17} /> : <ShoppingCart size={17} />}
         </button>
 
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-1 inline-flex items-center justify-center gap-3 px-8 py-4 bg-transparent text-navy border-2 border-navy hover:bg-navy/5 font-ui font-semibold text-sm tracking-wide rounded-full transition-colors duration-300 text-center"
+        <Link
+          href="/request-quote"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-navy/20 text-navy hover:border-gold hover:text-gold font-ui font-semibold text-xs uppercase tracking-wider rounded-full transition-colors min-h-[48px]"
         >
-          Buy Now via WhatsApp
-          <ArrowRight size={16} />
-        </a>
+          <FileText size={16} />
+          Request Bulk Quote
+        </Link>
       </div>
 
-      {/* Sticky Bottom Banner */}
+      {/* Sticky Bottom Product Bar */}
       <AnimatePresence>
         {showSticky && (
           <motion.div
@@ -75,35 +102,54 @@ export function ProductDetailActions({ product, formattedPrice }: ProductDetailA
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ type: "spring", damping: 20, stiffness: 300 }}
-            className="fixed bottom-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-t border-navy/10 shadow-[0_-10px_40px_rgba(0,0,0,0.05)] px-6 py-4 md:py-4 flex justify-center"
+            className="fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-md border-t border-navy/10 shadow-[0_-10px_40px_rgba(0,0,0,0.08)] px-4 sm:px-6 py-3 flex justify-center"
           >
-            <div className="max-w-[1440px] w-full flex items-center justify-between gap-6 pr-24 md:pr-0">
-              {/* Product Info (Hidden on very small screens) */}
-              <div className="hidden sm:flex items-center gap-4">
+            <div className="max-w-[1440px] w-full flex items-center justify-between gap-4 pr-44 sm:pr-52">
+              <div className="hidden sm:flex items-center gap-3">
                 {product.image && (
-                  <div className="w-12 h-12 relative rounded-md overflow-hidden border border-navy/10 flex-shrink-0">
-                    <Image src={product.image} alt={product.name} fill className="object-cover" unoptimized />
+                  <div className="w-11 h-11 relative rounded-lg overflow-hidden border border-navy/10 flex-shrink-0">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover"
+                      unoptimized
+                    />
                   </div>
                 )}
                 <div className="flex flex-col">
-                  <span className="font-heading font-semibold text-navy line-clamp-1">{product.name}</span>
-                  <span className="font-ui text-sm text-charcoal/70">{formattedPrice}</span>
+                  <span className="font-heading font-semibold text-navy text-sm line-clamp-1">
+                    {product.name}
+                  </span>
+                  <span className="font-ui text-xs font-semibold text-gold">
+                    {formattedPrice}
+                  </span>
                 </div>
               </div>
 
-              {/* Actions */}
-              <div className="flex w-full sm:w-auto items-center gap-3 ml-auto">
+              <div className="flex items-center gap-2.5">
+                <a
+                  href={product.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleWhatsAppClick}
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-ui font-semibold text-xs rounded-full whitespace-nowrap min-h-[42px]"
+                >
+                  <MessageCircle size={15} />
+                  Chat on WhatsApp to order
+                </a>
                 <button
+                  type="button"
                   onClick={handleAdd}
                   disabled={added}
-                  className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 font-ui font-semibold text-sm tracking-wide rounded-full transition-colors duration-300 whitespace-nowrap ${
+                  className={`hidden md:inline-flex items-center justify-center gap-2 px-5 py-2.5 font-ui font-semibold text-xs rounded-full transition-colors whitespace-nowrap min-h-[42px] ${
                     added
                       ? "bg-gold text-white"
                       : "bg-navy text-white hover:bg-gold"
                   }`}
                 >
-                  {added ? "Added" : "Add to Request"}
-                  {added ? <Check size={16} /> : <ShoppingCart size={16} />}
+                  {added ? "Added" : "Add to Quote"}
+                  {added ? <Check size={15} /> : <ShoppingCart size={15} />}
                 </button>
               </div>
             </div>
