@@ -10,6 +10,7 @@ export interface Project {
   location: string;
   client: string;
   sector: ProjectSector;
+  image?: string;
 }
 
 export const projects: Project[] = [
@@ -20,6 +21,7 @@ export const projects: Project[] = [
     location: "IBA, Lagos",
     client: "CCECC",
     sector: "Government",
+    image: "/projects/lasu-senate.webp",
   },
   {
     id: "gov-2",
@@ -27,6 +29,7 @@ export const projects: Project[] = [
     location: "Sogunro, Ogba, Lagos",
     client: "LSDPC",
     sector: "Government",
+    image: "/projects/lagoshoms-sogunro.webp",
   },
   {
     id: "gov-3",
@@ -34,6 +37,7 @@ export const projects: Project[] = [
     location: "Agbowa, Ikorodu, Lagos",
     client: "Min. Of Physical Planning & Urban Dev.",
     sector: "Government",
+    image: "/projects/agbowa-housing.webp",
   },
   {
     id: "gov-4",
@@ -62,6 +66,7 @@ export const projects: Project[] = [
     location: "Agege, Lagos",
     client: "Fak Construction Nig. Ltd",
     sector: "Government",
+    image: "/projects/agege-stadium.webp",
   },
   {
     id: "gov-8",
@@ -106,6 +111,7 @@ export const projects: Project[] = [
     location: "Alimosho General Hospital, Lagos",
     client: "Aron Nig. Ltd.",
     sector: "Hospital",
+    image: "/projects/alimosho-nursing-hostel.webp",
   },
   {
     id: "hosp-5",
@@ -129,6 +135,7 @@ export const projects: Project[] = [
     location: "Trans Amadi, Port- Harcourt, Rivers",
     client: "Debour Nig. Ltd.",
     sector: "Residential",
+    image: "/projects/rainbow-town.webp",
   },
   {
     id: "res-3",
@@ -166,6 +173,7 @@ export const projects: Project[] = [
     location: "Cipm Avenue, Alausa, Lagos",
     client: "Debour Nig. Ltd.",
     sector: "Corporate",
+    image: "/projects/cipm-house.webp",
   },
   {
     id: "corp-4",
@@ -173,6 +181,7 @@ export const projects: Project[] = [
     location: "Idowu Taylor Street, V.I, Lagos",
     client: "Debour Nig. Ltd.",
     sector: "Corporate",
+    image: "/projects/nij-hq.webp",
   },
   {
     id: "corp-5",

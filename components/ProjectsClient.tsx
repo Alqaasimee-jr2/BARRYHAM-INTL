@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Building2, Activity, Home, Briefcase, ArrowRight } from "lucide-react";
 import { projects, ProjectSector } from "@/data/projects";
@@ -75,6 +76,21 @@ export function ProjectsClient() {
                 className="bg-white rounded-2xl p-6 border border-navy/10 shadow-sm hover:shadow-md hover:border-gold/40 transition-all flex flex-col justify-between group"
               >
                 <div>
+                  {project.image && (
+                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl mb-4 bg-navy/5">
+                      <Image
+                        src={project.image}
+                        alt={project.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                      <span className="absolute bottom-2.5 right-2.5 bg-navy/85 backdrop-blur-sm text-offwhite text-[10px] font-ui px-2 py-0.5 rounded-full uppercase tracking-wider font-semibold">
+                        Verified Site
+                      </span>
+                    </div>
+                  )}
+
                   <div className="flex items-center justify-between gap-3 mb-4">
                     <span className="inline-flex items-center gap-1.5 font-ui text-[11px] font-semibold uppercase tracking-wider text-navy bg-offwhite px-2.5 py-1 rounded-full border border-navy/5">
                       {getSectorIcon(project.sector)}
@@ -120,7 +136,7 @@ export function ProjectsClient() {
             Verifiable Supply &amp; Installation Record
           </h3>
           <p className="font-ui text-xs md:text-sm text-charcoal/70 max-w-2xl mx-auto leading-relaxed mb-4">
-            Barryham International Limited has supplied materials for institutional, state government, healthcare, and private developments across Lagos, Rivers, Delta, Imo, Niger, and Abuja since 2018. Site photographic documentation is currently being archived.
+            Barryham International Limited has supplied materials for institutional, state government, healthcare, and private developments across Lagos, Rivers, Delta, Imo, Niger, and Abuja since 2018. Landmark public infrastructure projects feature verified site photography, while sensitive institutional and security sites preserve client confidentiality.
           </p>
           <Link
             href="/contact"
