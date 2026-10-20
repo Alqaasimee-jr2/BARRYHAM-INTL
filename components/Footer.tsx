@@ -43,7 +43,7 @@ export function Footer() {
               Authorised Sanitary, Plumbing &amp; Electrical Distributor
             </p>
             <p className="text-offwhite/75 font-ui text-xs md:text-sm mb-6 leading-relaxed">
-              Direct distributor and certified installer for Grohe, Ideal Standard, Villeroy &amp; Boch, Roca, Armitage Shanks, Geberit, Varmora, Ariston Water Heaters, and Coleman CTIL cables across Lagos and Nigeria.
+              Direct distributor and certified installer for Ideal Standard, Armitage Shanks, Geberit, Vado, Reigner, Roca, Grohe, Villeroy &amp; Boch, Ariston, and Coleman Wires and Cables. Genuine products, competitive trade pricing, and reliable project delivery.
             </p>
             <div className="flex flex-wrap gap-2.5">
               <a

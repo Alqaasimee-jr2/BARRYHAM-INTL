@@ -96,7 +96,7 @@ const SEO_HUB_CARDS = [
   },
   {
     title: "Ariston Water Heaters",
-    desc: "Genuine 15L to 100L electric storage and instant water heaters.",
+    desc: "Ariston water heaters capacity starts from 10litres, 15, 30, 50, 80, 100, 150, and above.",
     href: "/water-heaters-nigeria",
   },
   {
@@ -142,7 +142,7 @@ export function HomeClient() {
           </h1>
 
           <p className="font-ui font-light text-charcoal/80 text-sm md:text-base leading-relaxed max-w-xl mb-8">
-            Direct distributor and certified installer for Grohe, Ideal Standard, Villeroy &amp; Boch, Roca, Armitage Shanks, Ariston, and Coleman CTIL. Genuine products, competitive trade pricing, and reliable project delivery.
+            Direct distributor and certified installer for Ideal Standard, Armitage Shanks, Geberit, Vado, Reigner, Roca, Grohe, Villeroy &amp; Boch, Ariston, and Coleman Wires and Cables. Genuine products, competitive trade pricing, and reliable project delivery.
           </p>
 
           <div className="flex flex-wrap items-center gap-3.5">
