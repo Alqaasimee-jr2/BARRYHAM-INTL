@@ -26,7 +26,7 @@ This site exists to do three jobs:
 
 1. **Turn search traffic into quote requests.** Contractors, architects and homeowners search for specific products and categories in Lagos. Each category has its own landing page built to rank for that intent.
 2. **Show the catalogue.** A browsable, in-stock product catalogue with brand-level organisation.
-3. **Build trust.** Authorised brand partners, a project portfolio, testimonials, and two physical showrooms people can visit.
+3. **Build trust.** Authorised brand partners, a project portfolio, testimonials, and a physical showroom people can visit.
 
 Every important page funnels to one of two actions: **Request a Quote** or **Chat on WhatsApp**, which matches how buyers in this market actually transact.
 
@@ -37,7 +37,7 @@ Every important page funnels to one of two actions: **Request a Quote** or **Cha
 - **Authorised brands directory** covering Ideal Standard, Armitage Shanks, Geberit, Grohe, Kohler, Reigner, Roca, Vado, hansgrohe, Ariston, Coleman CTIL, Villeroy & Boch, Varmora, Twyford and SANIT
 - **Trade and contractor pages**: bulk supply, BOQ fulfilment, phased deliveries
 - **Delivery and installation** service pages
-- **Two showroom pages**: Dopemu-Agege and Alimosho (LASU-Isheri Road), with addresses and opening hours
+- **Showroom page**: Alimosho (LASU-Isheri Road), with address and opening hours
 - **Project portfolio**, **client testimonials**, **buying guides/blog** and **FAQ**
 - **Quote request flow** plus a pre-filled WhatsApp deep link on every key page
 - **SEO foundations**: per-page metadata, Open Graph and Twitter cards, canonical URL, and keyword-targeted page structure
@@ -120,7 +120,7 @@ BARRYHAM-INTL/
 | `/water-heaters-nigeria` | Ariston water heaters |
 | `/brands` | Authorised brand partners |
 | `/services`, `/bulk-supply-contractors`, `/delivery-installation` | Services and trade supply |
-| `/dopemu-showroom`, `/alimosho-showroom` | Showroom locations and hours |
+| `/alimosho-showroom` | Showroom location and hours |
 | `/projects`, `/blog`, `/about`, `/faq`, `/contact` | Credibility and support content |
 | `/request-quote` | Quote request form |
 
@@ -128,7 +128,6 @@ BARRYHAM-INTL/
 
 **Barryham International Limited**
 
-- **Dopemu-Agege showroom:** Block B, Suite 3, Association Plaza, Cement Bus Stop, Lagos-Abeokuta Express Way, Dopemu-Agege, Lagos
 - **Alimosho / Igando showroom and office:** Suite 1, Petrocam Gas Station, Odo Eran/Hotel Bus-stop, along LASU-Isheri/Igando Road, Alimosho, Lagos
 - **Hours:** Monday to Saturday, 8:00 AM to 6:00 PM
 - **WhatsApp / phone:** +234 803 475 0270
