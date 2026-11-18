@@ -46,13 +46,13 @@ export const testimonials: Testimonial[] = [
   {
     id: "t-4",
     quote:
-      "Visited the Dopemu-Agege showroom to pick wall-hung WCs, Grohe basin mixers, and Ariston water heaters for my duplex in Magodo. Everything was 100% original and delivered the next morning.",
+      "Visited the showroom to pick wall-hung WCs, Grohe basin mixers, and Ariston water heaters for my duplex in Magodo. Everything was 100% original and delivered the next morning.",
     name: "Alhaji Kunle Balogun",
     role: "Homeowner & Developer",
     project: "Duplex Build, Magodo Phase 2",
     rating: 5,
     source: "Google Review",
-    categoryLink: { label: "Dopemu Showroom", href: "/dopemu-showroom" },
+    categoryLink: { label: "Bathroom Fittings Nigeria", href: "/bathroom-fittings-nigeria" },
   },
   {
     id: "t-5",

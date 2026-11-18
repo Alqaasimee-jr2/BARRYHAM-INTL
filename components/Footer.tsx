@@ -74,10 +74,10 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Showrooms & Opening Hours (3 cols) */}
+          {/* Column 2: Showroom & Opening Hours (3 cols) */}
           <div className="lg:col-span-3">
             <h4 className="font-heading font-semibold text-lg mb-5 tracking-wide text-gold">
-              Lagos Showrooms &amp; Hours
+              Lagos Showroom &amp; Hours
             </h4>
             <div className="space-y-4">
               {BUSINESS_INFO.showrooms.map((showroom) => (
@@ -263,7 +263,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} {BUSINESS_INFO.name}. All rights reserved.
           </p>
           <p className="font-ui text-xs text-offwhite/60">
-            Showrooms in Dopemu-Agege &amp; Alimosho, Lagos • Nationwide Delivery across Nigeria
+            Showroom in Alimosho, Lagos • Nationwide Delivery across Nigeria
           </p>
         </div>
       </div>

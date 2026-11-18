@@ -18,7 +18,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "https://barryham.site/delivery-installation", lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: "https://barryham.site/projects", lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: "https://barryham.site/brands", lastModified: now, changeFrequency: "monthly", priority: 0.85 },
-    { url: "https://barryham.site/dopemu-showroom", lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: "https://barryham.site/alimosho-showroom", lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: "https://barryham.site/services", lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: "https://barryham.site/about", lastModified: now, changeFrequency: "monthly", priority: 0.8 },

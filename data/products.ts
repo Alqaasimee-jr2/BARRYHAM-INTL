@@ -904,7 +904,7 @@ function inferSpecifications(raw: RawProduct): Record<string, string> {
       raw.category === "cables-lighting"
         ? "SON / NIS Certified Pure Copper"
         : "European ISO 9001 & CE Certified",
-    "Lagos Showroom Stock": "Dopemu-Agege & Alimosho",
+    "Lagos Showroom Stock": "Alimosho (LASU-Isheri Rd)",
     "Installation Support": "Available via Barryham Technical Team",
   };
 }
@@ -920,7 +920,7 @@ function inferDescription(raw: RawProduct): string {
       ? "energy-efficient water heating system"
       : "high-conductivity electrical cable";
 
-  return `Genuine ${raw.brand} ${raw.name} (${catText}) supplied directly by Barryham International Limited. Engineered for long-term durability in Nigerian residential, commercial, and institutional projects. Available for showroom inspection in Dopemu-Agege and Alimosho or fast nationwide delivery.`;
+  return `Genuine ${raw.brand} ${raw.name} (${catText}) supplied directly by Barryham International Limited. Engineered for long-term durability in Nigerian residential, commercial, and institutional projects. Available for showroom inspection in Alimosho or fast nationwide delivery.`;
 }
 
 export const products: Product[] = RAW_PRODUCTS.map((raw) => {

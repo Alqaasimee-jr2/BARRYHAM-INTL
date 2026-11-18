@@ -69,7 +69,7 @@ export function AboutClient() {
               Our Mission
             </h2>
             <p className="font-ui text-charcoal/90 text-lg leading-relaxed">
-              To deliver authentic manufacturer-backed products at competitive retail and trade rates from our Dopemu-Agege and Alimosho showrooms, ensuring your projects never compromise on quality or timeline.
+              To deliver authentic manufacturer-backed products at competitive retail and trade rates from our Alimosho showroom, ensuring your projects never compromise on quality or timeline.
             </p>
           </motion.div>
         </div>

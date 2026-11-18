@@ -20,11 +20,11 @@ const PILLARS = [
   },
   {
     icon: Store,
-    title: "Physical Lagos Showrooms",
+    title: "Physical Lagos Showroom",
     description:
-      "Inspect finishes, ceramic glazes, flush valves, and cable gauges firsthand at our Dopemu-Agege and Alimosho (LASU-Isheri Rd) showrooms, open Monday–Saturday.",
-    href: "/dopemu-showroom",
-    linkLabel: "Showroom Locations →",
+      "Inspect finishes, ceramic glazes, flush valves, and cable gauges firsthand at our Alimosho (LASU-Isheri Rd) showroom, open Monday–Saturday.",
+    href: "/alimosho-showroom",
+    linkLabel: "Showroom Location →",
   },
   {
     icon: Truck,

@@ -128,7 +128,7 @@ export function LandingPageTemplate({ config }: { config: LandingPageConfig }) {
         </div>
       </section>
 
-      {/* Showroom Map (for Dopemu & Alimosho) */}
+      {/* Showroom Map */}
       {showroom && config.showroomInfo && (
         <section className="pt-12 px-6 lg:px-12 max-w-7xl mx-auto w-full">
           <div className="bg-white rounded-2xl p-6 md:p-8 border border-navy/10 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">

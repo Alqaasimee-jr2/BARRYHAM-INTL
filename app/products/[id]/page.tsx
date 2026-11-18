@@ -261,7 +261,7 @@ export default function ProductDetailPage({
                     Showroom Pickup Available
                   </span>
                   <span className="text-charcoal/70">
-                    Inspect in Dopemu-Agege or Alimosho ({BUSINESS_INFO.openingHours.shortDisplay}).
+                    Inspect in Alimosho ({BUSINESS_INFO.openingHours.shortDisplay}).
                   </span>
                 </div>
               </div>

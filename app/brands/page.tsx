@@ -132,7 +132,7 @@ const BRAND_FAQS = [
   {
     question: "Do you stock spare parts for the brands you distribute?",
     answer:
-      "Yes. Unlike grey-market sellers, we stock original filling valves, flush plates, concealed mechanisms, angle valves, and cartridges at our Dopemu-Agege and Alimosho showrooms.",
+      "Yes. Unlike grey-market sellers, we stock original filling valves, flush plates, concealed mechanisms, angle valves, and cartridges at our Alimosho showroom.",
   },
 ];
 
@@ -165,7 +165,7 @@ export default function BrandsPage() {
             Authorised Sanitary Ware, Plumbing &amp; Electrical Brands in Nigeria
           </h1>
           <p className="font-ui text-base md:text-lg text-offwhite/90 leading-relaxed max-w-2xl mx-auto mb-8">
-            For homeowners, architects, MEP engineers, and contractors who refuse counterfeit building materials: Barryham International Limited supplies 15 globally certified manufacturers directly from our Dopemu and Alimosho showrooms.
+            For homeowners, architects, MEP engineers, and contractors who refuse counterfeit building materials: Barryham International Limited supplies 15 globally certified manufacturers directly from our Alimosho showroom.
           </p>
 
           <div className="flex flex-wrap justify-center gap-3.5">

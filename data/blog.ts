@@ -45,7 +45,7 @@ export const blogArticles: BlogArticle[] = [
       href: "/sanitary-ware-lagos",
       title: "Sanitary Ware Supplier in Lagos",
       description:
-        "Explore genuine Roca, Ideal Standard, Kale, and Armitage Shanks WC suites, basins, mixers, and shower sets in stock at our Dopemu and Alimosho showrooms.",
+        "Explore genuine Roca, Ideal Standard, Kale, and Armitage Shanks WC suites, basins, mixers, and shower sets in stock at our Alimosho showroom.",
     },
     secondaryServicePage: {
       href: "/bathroom-fittings-nigeria",
@@ -157,7 +157,7 @@ export const blogArticles: BlogArticle[] = [
       href: "/sanitary-ware-lagos",
       title: "Sanitary Ware Supplier in Lagos",
       description:
-        "Need genuine replacement cistern internals, ceramic disc mixers, or complete WC upgrades? Visit our Lagos showrooms or order on WhatsApp.",
+        "Need genuine replacement cistern internals, ceramic disc mixers, or complete WC upgrades? Visit our Lagos showroom or order on WhatsApp.",
     },
     secondaryServicePage: {
       href: "/water-heaters-nigeria",

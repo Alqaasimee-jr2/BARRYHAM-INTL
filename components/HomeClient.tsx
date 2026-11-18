@@ -110,9 +110,9 @@ const SEO_HUB_CARDS = [
     href: "/delivery-installation",
   },
   {
-    title: "Visit Our Showrooms",
-    desc: "Direct product inspection at our Dopemu-Agege & Alimosho showrooms.",
-    href: "/dopemu-showroom",
+    title: "Visit Our Showroom",
+    desc: "Direct product inspection at our Alimosho (LASU-Isheri Road) showroom.",
+    href: "/alimosho-showroom",
   },
 ];
 
@@ -361,10 +361,10 @@ export function HomeClient() {
             <div className="relative h-44 md:h-52 bg-navy rounded-2xl p-6 flex flex-col justify-end text-white border border-navy/20">
               <MapPin size={18} className="text-gold mb-2" />
               <h3 className="font-heading font-semibold text-base md:text-lg mb-1">
-                2 Lagos Showrooms
+                Lagos Showroom
               </h3>
               <p className="font-ui text-[11px] text-offwhite/70">
-                Dopemu-Agege &amp; Alimosho (LASU-Isheri Rd)
+                Alimosho (LASU-Isheri Rd)
               </p>
             </div>
           </div>

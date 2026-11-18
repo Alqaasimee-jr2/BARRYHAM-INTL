@@ -322,7 +322,7 @@ export function ProductsClient() {
               No matching SKU found in the online filter
             </p>
             <p className="font-ui text-sm text-charcoal/70 mb-6 max-w-md mx-auto">
-              We stock over 130+ additional models at our Dopemu and Alimosho showrooms. Send your item name or photo on WhatsApp for an instant stock check.
+              We stock over 130+ additional models at our Alimosho showroom. Send your item name or photo on WhatsApp for an instant stock check.
             </p>
             <button
               type="button"

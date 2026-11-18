@@ -21,7 +21,7 @@ export interface LandingPageConfig {
     bullets: string[];
   };
   showroomInfo?: {
-    showroomIndex: 0 | 1;
+    showroomIndex: number;
     landmarks: string;
     areasServed: string[];
   };
@@ -47,13 +47,13 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     metaTitle:
       "Sanitary Ware Supplier in Lagos | Grohe, Ideal Standard, Villeroy & Boch | Barryham Int’l Ltd",
     metaDescription:
-      "Authorised sanitary ware supplier in Lagos with showrooms in Dopemu-Agege & Alimosho. Shop genuine wall-hung WCs, close-coupled toilets, washbasins & urinals with fast delivery.",
+      "Authorised sanitary ware supplier in Lagos with our showroom in Alimosho. Shop genuine wall-hung WCs, close-coupled toilets, washbasins & urinals with fast delivery.",
     eyebrow: "Lagos Showroom Stock • Retail & Bulk Trade Supply",
     h1: "Sanitary Ware Supplier in Lagos",
     whoItIsFor:
       "Built for homeowners, architects, interior designers, estate developers, hoteliers, and civil contractors sourcing genuine, non-counterfeit European sanitary ware in Lagos.",
     introParagraphs: [
-      "Barryham International Limited is a direct distributor and installer of certified sanitary ware in Lagos. From our showrooms in Dopemu-Agege and Alimosho (LASU-Isheri Road), we supply vitreous china WCs, washbasins, concealed cisterns, bidets, and commercial urinals engineered to withstand Lagos borehole water and coastal humidity.",
+      "Barryham International Limited is a direct distributor and installer of certified sanitary ware in Lagos. From our showroom in Alimosho (LASU-Isheri Road), we supply vitreous china WCs, washbasins, concealed cisterns, bidets, and commercial urinals engineered to withstand Lagos borehole water and coastal humidity.",
       "Whether you are fitting out a private duplex in Lekki, Ikeja GRA, or Magodo, or procuring 200+ sanitary sets for a residential estate or hospital project, we provide immediate stock access, manufacturer warranties, and professional on-site installation.",
     ],
     productCategories: [
@@ -112,7 +112,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       {
         question: "Where can I inspect your sanitary ware in Lagos before buying?",
         answer:
-          "You can visit either of our two Lagos showrooms Monday through Saturday from 8:00 AM to 6:00 PM: (1) Block B, Suite 3, Association Plaza, Cement Bus Stop, Dopemu-Agege, or (2) Suite 1, Petrocam Gas Station, Odo Eran/Hotel Bus-stop, LASU-Isheri/Igando Road, Alimosho.",
+          "You can visit our Lagos showroom Monday through Saturday from 8:00 AM to 6:00 PM at Suite 1, Petrocam Gas Station, Odo Eran/Hotel Bus-stop, LASU-Isheri/Igando Road, Alimosho, Lagos.",
       },
       {
         question: "Are your Grohe, Ideal Standard, and Villeroy & Boch toilets original?",
@@ -134,7 +134,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       { label: "Bathroom Fittings Nigeria", href: "/bathroom-fittings-nigeria" },
       { label: "Plumbing Fittings Lagos", href: "/plumbing-fittings-lagos" },
       { label: "Water Heaters Nigeria", href: "/water-heaters-nigeria" },
-      { label: "Dopemu Showroom", href: "/dopemu-showroom" },
+      { label: "Alimosho Showroom", href: "/alimosho-showroom" },
       { label: "Bulk Contractor Supply", href: "/bulk-supply-contractors" },
     ],
     relatedBlogGuides: [
@@ -168,7 +168,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       "Engineered for plumbing contractors, MEP engineers, facility managers, developers, and homeowners who need leak-free first-fix and second-fix plumbing fittings in Lagos.",
     introParagraphs: [
       "Plumbing failures behind tiled walls are among the costliest mistakes in Nigerian construction. At Barryham International Limited, we stock and install precision-engineered European plumbing fittings designed for high pressure tolerance, mineral-rich borehole water, and decades of trouble-free operation.",
-      "From concealed cistern frames and filling mechanisms to ceramic-disc basin mixers, thermostatic shower valves, angle stop valves, and bottle traps, our Dopemu and Alimosho showrooms carry ready stock for immediate dispatch.",
+      "From concealed cistern frames and filling mechanisms to ceramic-disc basin mixers, thermostatic shower valves, angle stop valves, and bottle traps, our Alimosho showroom carries ready stock for immediate dispatch.",
     ],
     productCategories: [
       {
@@ -216,7 +216,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
         "Pre-installation rough-in verification and pressure-testing support",
         "Genuine spare parts stocked locally (filling valves, flush plates, cartridges, angle valves)",
         "24–48hr delivery to project sites across Lagos Mainland & Island",
-        "Dedicated trade desk for plumbers and MEP contractors at Dopemu & Alimosho",
+        "Dedicated trade desk for plumbers and MEP contractors at our Alimosho showroom",
       ],
     },
     whatsappCtaMessage:
@@ -225,7 +225,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       {
         question: "Do you sell replacement concealed cistern parts and flush plates in Lagos?",
         answer:
-          "Yes. We stock Grohe, Sanit, Villeroy & Boch, and Ideal Standard flush plates, universal filling valves, concealed mechanisms, and connection cables at our Lagos showrooms.",
+          "Yes. We stock Grohe, Sanit, Villeroy & Boch, and Ideal Standard flush plates, universal filling valves, concealed mechanisms, and connection cables at our Lagos showroom.",
       },
       {
         question: "What water pressure is required for your Grohe and Villeroy & Boch shower mixers?",
@@ -271,7 +271,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       "Built for electrical engineers, M&E contractors, estate developers, facility managers, and homeowners who require 100% genuine, full-gauge SON-certified copper cables and electrical accessories in Lagos.",
     introParagraphs: [
       "Substandard or undersized electrical cables are a leading cause of overheating, voltage drop, and fire hazards—especially in Nigerian buildings switching daily between grid supply, inverters, and heavy-duty generators. Barryham International Limited supplies authentic Coleman CTIL wires and cables alongside commercial and residential lighting accessories.",
-      "Every coil and metre of cable we supply from our Dopemu-Agege and Alimosho depots meets strict NIS/SON conductivity and insulation standards, giving you peace of mind from domestic wiring to three-phase armoured feeder installations.",
+      "Every coil and metre of cable we supply from our Alimosho depot meets strict NIS/SON conductivity and insulation standards, giving you peace of mind from domestic wiring to three-phase armoured feeder installations.",
     ],
     productCategories: [
       {
@@ -308,7 +308,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       bullets: [
         "Guaranteed full-length 100m factory-sealed Coleman CTIL coils",
         "Direct wholesale pricing for electrical contractors and estate developers",
-        "Same-day pickup at Dopemu-Agege or Alimosho showrooms",
+        "Same-day pickup at our Alimosho showroom",
         "Site delivery across Lagos within 24–48 hours",
       ],
     },
@@ -335,7 +335,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       { label: "Water Heaters Nigeria", href: "/water-heaters-nigeria" },
       { label: "Bulk Contractor Supply", href: "/bulk-supply-contractors" },
       { label: "Plumbing Fittings Lagos", href: "/plumbing-fittings-lagos" },
-      { label: "Dopemu Showroom", href: "/dopemu-showroom" },
+      { label: "Alimosho Showroom", href: "/alimosho-showroom" },
     ],
     relatedBlogGuides: [
       {
@@ -722,11 +722,10 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       {
         question: "Can I pick up my order directly from your showroom?",
         answer:
-          "Yes. Immediate customer and contractor pickup is available Monday–Saturday (8:00 AM – 6:00 PM) at both our Dopemu-Agege and Alimosho showrooms.",
+          "Yes. Immediate customer and contractor pickup is available Monday–Saturday (8:00 AM – 6:00 PM) at our Alimosho showroom.",
       },
     ],
     relatedLandingLinks: [
-      { label: "Dopemu-Agege Showroom", href: "/dopemu-showroom" },
       { label: "Alimosho Showroom", href: "/alimosho-showroom" },
       { label: "Plumbing Fittings Lagos", href: "/plumbing-fittings-lagos" },
       { label: "Sanitary Ware Lagos", href: "/sanitary-ware-lagos" },
@@ -745,130 +744,19 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     ],
   },
 
-  "dopemu-showroom": {
-    slug: "dopemu-showroom",
-    metaTitle:
-      "Dopemu-Agege Sanitary Ware, Plumbing & Electrical Showroom | Barryham Int’l Ltd Lagos",
-    metaDescription:
-      "Visit Barryham Int’l Ltd Main Showroom at Block B, Suite 3, Association Plaza, Cement Bus Stop, Lagos-Abeokuta Expressway, Dopemu-Agege, Lagos. Open Mon–Sat 8am–6pm.",
-    eyebrow: "Main Lagos Showroom • Cement Bus Stop, Dopemu-Agege",
-    h1: "Barryham Dopemu-Agege Sanitary Ware & Building Materials Showroom",
-    whoItIsFor:
-      "Conveniently located for homeowners, builders, plumbers, and contractors across Ikeja, Agege, Dopemu, Ogba, Magodo, Maryland, Ilupeju, Oshodi, and Sango-Ota.",
-    introParagraphs: [
-      "Our flagship Dopemu-Agege showroom is located at Block B, Suite 3, Association Plaza, Cement Bus Stop, along the Lagos-Abeokuta Expressway. Walk in Monday through Saturday (8:00 AM – 6:00 PM) to inspect genuine Grohe, Villeroy & Boch, Ideal Standard, Roca, and Varmora sanitary ware alongside Ariston water heaters and Coleman CTIL cables.",
-      "With easy expressway access and on-site loading space, contractors and homeowners can compare WC profiles, test mixer finishes, confirm rough-in dimensions with our sales engineers, and load stocked items immediately.",
-    ],
-    productCategories: [
-      {
-        title: "On-Display WCs, Washbasins & Bathroom Suites",
-        description:
-          "Compare wall-hung and close-coupled toilets from Ideal Standard, Grohe, Villeroy & Boch, and Varmora side-by-side.",
-        href: "/sanitary-ware-lagos",
-      },
-      {
-        title: "Grohe & Villeroy & Boch Brassware Counter",
-        description:
-          "Inspect basin mixers, concealed shower systems, rain shower heads, and bathroom accessory sets in person.",
-        href: "/plumbing-fittings-lagos",
-      },
-      {
-        title: "Concealed Cisterns & Plumbing Spares",
-        description:
-          "Immediate pickup for Grohe Uniset tanks, Sanit frames, flush plates, angle valves, P-traps, and drains.",
-        href: "/plumbing-fittings-lagos",
-      },
-      {
-        title: "Ariston Water Heaters & Coleman CTIL Cables",
-        description:
-          "Stocked 15L–100L Ariston water heaters and factory-sealed 100m coils of Coleman copper cables.",
-        href: "/electrical-fittings-lagos",
-      },
-    ],
-    productFilterCategory: "all",
-    brandsSupplied: [
-      "Grohe",
-      "Ideal Standard",
-      "Villeroy & Boch",
-      "Roca",
-      "Varmora",
-      "Sanit",
-      "Ariston",
-      "Coleman CTIL",
-    ],
-    deliveryAndInstallation: {
-      heading: "Visiting & Ordering From Our Dopemu-Agege Showroom",
-      summary:
-        "Block B, Suite 3, Association Plaza, Cement Bus Stop, Lagos-Abeokuta Express Way, Dopemu-Agege, Lagos.",
-      bullets: [
-        "Opening Hours: Monday – Saturday, 8:00 AM – 6:00 PM",
-        "Direct Phones: 0803 475 0270, 0808 444 6319, 0909 038 1508",
-        "Instant proforma invoicing and same-day vehicle loading for contractors",
-        "Fast dispatch to Ikeja GRA, Ogba, Magodo, Lekki, Victoria Island, and nationwide",
-      ],
-    },
-    showroomInfo: {
-      showroomIndex: 0,
-      landmarks:
-        "Located inside Association Plaza right at Cement Bus Stop on the Lagos-Abeokuta Expressway, Dopemu-Agege (5 minutes from Ikeja Along / Mangoro).",
-      areasServed: [
-        "Dopemu",
-        "Agege",
-        "Ikeja & Ikeja GRA",
-        "Ogba & Ojodu Berger",
-        "Magodo Phase 1 & 2",
-        "Maryland & Mende",
-        "Oshodi & Isolo",
-        "Sango-Ota & Abeokuta Axis",
-      ],
-    },
-    whatsappCtaMessage:
-      "Hello Barryham Dopemu Showroom, I would like to check stock / visit the showroom for...",
-    faqs: [
-      {
-        question: "What is the exact address of the Dopemu-Agege showroom?",
-        answer:
-          "Block B, Suite 3, Association Plaza, Cement Bus Stop, Lagos-Abeokuta Express Way, Dopemu-Agege, Lagos.",
-      },
-      {
-        question: "What are the Dopemu showroom opening hours?",
-        answer:
-          "We are open Monday through Saturday from 8:00 AM to 6:00 PM (closed on Sundays).",
-      },
-      {
-        question: "Can I pay and pick up items the same day at the Dopemu showroom?",
-        answer:
-          "Yes. You can inspect products, receive an official invoice, make payment via transfer, and load stocked items immediately or schedule delivery to your site.",
-      },
-    ],
-    relatedLandingLinks: [
-      { label: "Alimosho Showroom", href: "/alimosho-showroom" },
-      { label: "Sanitary Ware Lagos", href: "/sanitary-ware-lagos" },
-      { label: "Plumbing Fittings Lagos", href: "/plumbing-fittings-lagos" },
-      { label: "Electrical Fittings Lagos", href: "/electrical-fittings-lagos" },
-    ],
-    relatedBlogGuides: [
-      {
-        title: "How to Choose the Best Bathroom Fittings for Lagos Homes",
-        slug: "best-bathroom-fittings-lagos",
-        summary: "Prepare your bathroom specification list before visiting our showroom.",
-      },
-    ],
-  },
-
   "alimosho-showroom": {
     slug: "alimosho-showroom",
     metaTitle:
       "Alimosho Sanitary Ware, Plumbing & Electrical Showroom (LASU-Isheri Rd) | Barryham Int’l Ltd",
     metaDescription:
       "Visit Barryham Int’l Ltd Alimosho Showroom at Suite 1, Petrocam Gas Station, Odo Eran/Hotel Bus-stop, Along LASU-Isheri/Igando Road, Alimosho, Lagos. Open Mon–Sat 8am–6pm.",
-    eyebrow: "Alimosho Showroom & Trade Desk • LASU-Isheri / Igando Road",
+    eyebrow: "Lagos Showroom & Trade Desk • LASU-Isheri / Igando Road",
     h1: "Barryham Alimosho (LASU-Isheri Road) Showroom & Trade Counter",
     whoItIsFor:
-      "Serving homeowners, estate developers, plumbers, and electrical contractors across Alimosho, Igando, Ikotun, Egbeda, Idimu, Isheri-Olofin, Festac, Amuwo-Odofin, Ojo, and Badagry axis.",
+      "Serving homeowners, estate developers, plumbers, and electrical contractors across Alimosho, Igando, Ikotun, Egbeda, Idimu, Isheri-Olofin, Festac, Amuwo-Odofin, Ojo, and across Lagos.",
     introParagraphs: [
-      "Located at Suite 1, Petrocam Gas Station, Odo Eran/Hotel Bus-stop, along the LASU-Isheri/Igando Road in Alimosho, our second Lagos showroom brings genuine European sanitary ware, plumbing fittings, Ariston water heaters, and Coleman cables directly to fast-growing residential and commercial corridors in West Lagos.",
-      "Instead of battling traffic across town for authentic Grohe mixers, Ideal Standard WCs, or factory-sealed Coleman cables, builders in Alimosho, Igando, Egbeda, Festac, and Ojo can inspect and pick up certified stock right in their neighbourhood.",
+      "Located at Suite 1, Petrocam Gas Station, Odo Eran/Hotel Bus-stop, along the LASU-Isheri/Igando Road in Alimosho, our Lagos showroom brings genuine European sanitary ware, plumbing fittings, Ariston water heaters, and Coleman cables directly to residential and commercial projects across Lagos.",
+      "Instead of battling traffic across town for authentic Grohe mixers, Ideal Standard WCs, or factory-sealed Coleman cables, builders in Alimosho, Igando, Egbeda, Festac, Ojo, and greater Lagos can inspect and pick up certified stock directly.",
     ],
     productCategories: [
       {
@@ -914,12 +802,12 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       bullets: [
         "Opening Hours: Monday – Saturday, 8:00 AM – 6:00 PM",
         "Secure parking inside the Petrocam Gas Station complex at Odo Eran / Hotel Bus-Stop",
-        "Same-day delivery across Igando, Ikotun, Egbeda, Idimu, Isheri, Festac, Okota, and Ojo",
+        "Same-day delivery across Igando, Ikotun, Egbeda, Idimu, Isheri, Festac, Okota, Ojo, and across Lagos",
         "Direct WhatsApp stock check & proforma invoices: +234 803 475 0270",
       ],
     },
     showroomInfo: {
-      showroomIndex: 1,
+      showroomIndex: 0,
       landmarks:
         "Inside Petrocam Gas Station complex at Odo Eran / Hotel Bus-Stop along the LASU-Isheri / Igando Road, Alimosho, Lagos.",
       areasServed: [
@@ -941,21 +829,21 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
           "We are at Suite 1, Petrocam Gas Station, Odo Eran/Hotel Bus-stop, Along LASU-Isheri/Igando Road, Alimosho, Lagos.",
       },
       {
-        question: "Are prices at the Alimosho showroom the same as the Dopemu-Agege showroom?",
+        question: "Can I pay and pick up items the same day at the Alimosho showroom?",
         answer:
-          "Yes! Both Lagos locations operate under unified official Barryham retail and trade price lists, and stock can also be transferred between branches for large orders.",
+          "Yes! You can inspect products, receive an official invoice, make payment via transfer, and load stocked items immediately or schedule delivery to your site.",
       },
       {
-        question: "Do you deliver to sites in Igando, Ikotun, Egbeda, Festac, and Ojo?",
+        question: "Do you deliver to sites in Igando, Ikotun, Egbeda, Festac, Ojo, and across Lagos?",
         answer:
-          "Yes. Because our Alimosho branch is right on the LASU-Isheri Road corridor, we offer rapid same-day or next-morning delivery to sites across Alimosho, Festac, Okota, and Ojo.",
+          "Yes. Because our Alimosho showroom is right on the LASU-Isheri Road corridor, we offer rapid same-day or next-morning delivery to sites across Alimosho, Festac, Okota, Ojo, and all parts of Lagos.",
       },
     ],
     relatedLandingLinks: [
-      { label: "Dopemu-Agege Showroom", href: "/dopemu-showroom" },
       { label: "Sanitary Ware Lagos", href: "/sanitary-ware-lagos" },
       { label: "Plumbing Fittings Lagos", href: "/plumbing-fittings-lagos" },
       { label: "Water Heaters Nigeria", href: "/water-heaters-nigeria" },
+      { label: "Electrical Fittings Lagos", href: "/electrical-fittings-lagos" },
     ],
     relatedBlogGuides: [
       {

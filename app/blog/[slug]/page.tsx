@@ -525,7 +525,7 @@ export default function BlogPostPage({
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {[
               "Direct manufacturer representatives — genuine products, no counterfeits",
-              "Two physical Lagos showrooms in Dopemu/Agege & Igando/Alimosho",
+              "Physical Lagos showroom in Igando/Alimosho (LASU-Isheri Road)",
               "Fast Lagos & nationwide delivery plus certified installation support",
               "Dedicated contractor & bulk project pricing on WhatsApp",
             ].map((point, i) => (

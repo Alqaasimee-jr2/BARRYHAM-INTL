@@ -5,7 +5,7 @@ import { SectionWhatsAppCTA } from "@/components/SectionWhatsAppCTA";
 export const metadata: Metadata = {
   title: "FAQs on Sanitary Ware, Plumbing & Electrical Supply | Barryham Int'l Ltd",
   description:
-    "Frequently asked questions about Barryham Int'l Ltd — genuine sanitary ware, electrical cables, plumbing fittings, Lagos showrooms, nationwide delivery, and installation.",
+    "Frequently asked questions about Barryham Int'l Ltd — genuine sanitary ware, electrical cables, plumbing fittings, Lagos showroom, nationwide delivery, and installation.",
   alternates: {
     canonical: "https://barryham.site/faq",
   },
@@ -30,7 +30,7 @@ const faqs = [
   {
     question: "Do you deliver across Lagos and nationwide?",
     answer:
-      "Yes, we deliver across Lagos within 24–48 hours and dispatch nationwide to Abuja, Port Harcourt, Ibadan, Enugu, Kano, and all 36 states. You can also inspect and pick up orders from our Dopemu/Agege or Igando/Alimosho showrooms.",
+      "Yes, we deliver across Lagos within 24–48 hours and dispatch nationwide to Abuja, Port Harcourt, Ibadan, Enugu, Kano, and all 36 states. You can also inspect and pick up orders from our Igando/Alimosho showroom.",
   },
   {
     question: "Are your products genuine and certified?",
@@ -43,9 +43,9 @@ const faqs = [
       "Yes. We regularly supply large-scale residential estates, hotels, hospitals, government buildings, and commercial projects. Reach out via WhatsApp or our Request a Quote page with your Bill of Quantities (BOQ) for trade and volume pricing.",
   },
   {
-    question: "Where are your Lagos showrooms located and what are your opening hours?",
+    question: "Where is your Lagos showroom located and what are your opening hours?",
     answer:
-      "We have two Lagos showrooms open Monday to Saturday, 8:00 AM – 6:00 PM: (1) Dopemu/Agege Showroom: Block B, Suite 3, Association Plaza, Cement Bus Stop, Lagos-Abeokuta Express Way, Dopemu, Agege, Lagos. (2) Alimosho/Igando Showroom: Suite 1, Petrocam Gas Station, Odo Eran/Hotel Bus-stop, Along LASU-Isheri/Igando Road, Alimosho, Lagos.",
+      "Our Lagos showroom is open Monday to Saturday, 8:00 AM – 6:00 PM at Suite 1, Petrocam Gas Station, Odo Eran/Hotel Bus-stop, Along LASU-Isheri/Igando Road, Alimosho, Lagos.",
   },
   {
     question: "How long has Barryham Int'l Ltd been in business?",
@@ -79,7 +79,7 @@ export default function FAQPage() {
             Frequently Asked Questions
           </h1>
           <p className="font-ui text-lg text-offwhite/90">
-            Everything you need to know about our genuine building materials, Lagos showrooms, nationwide delivery, and ordering on WhatsApp.
+            Everything you need to know about our genuine building materials, Lagos showroom, nationwide delivery, and ordering on WhatsApp.
           </p>
         </div>
       </section>

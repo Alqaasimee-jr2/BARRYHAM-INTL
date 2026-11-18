@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title:
     "Premium Sanitary Ware, Plumbing & Electrical Fittings in Lagos | Barryham Int’l Ltd",
   description:
-    "Direct distributor & installer of genuine Grohe, Ideal Standard, Villeroy & Boch, Roca, Armitage Shanks, Ariston Water Heaters & Coleman CTIL cables in Lagos & Nigeria. Visit our Dopemu & Alimosho showrooms.",
+    "Direct distributor & installer of genuine Grohe, Ideal Standard, Villeroy & Boch, Roca, Armitage Shanks, Ariston Water Heaters & Coleman CTIL cables in Lagos & Nigeria. Visit our Alimosho showroom.",
   alternates: {
     canonical: "https://barryham.site/",
   },

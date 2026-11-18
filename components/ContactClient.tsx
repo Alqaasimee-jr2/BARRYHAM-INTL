@@ -93,10 +93,10 @@ export function ContactClient() {
           <div>
             <h2 className="font-heading font-bold text-2xl md:text-3xl text-navy mb-3 flex items-center gap-3">
               <MapPin className="text-gold shrink-0" />
-              Visit Our Lagos Showrooms
+              Visit Our Lagos Showroom
             </h2>
             <p className="font-ui text-sm text-charcoal/80 mb-6">
-              Inspect genuine sanitary ware, taps, concealed cisterns, water heaters, and cables in person at either of our Lagos locations.
+              Inspect genuine sanitary ware, taps, concealed cisterns, water heaters, and cables in person at our Lagos location.
             </p>
 
             {/* Opening Hours Banner */}
@@ -116,14 +116,14 @@ export function ContactClient() {
             </div>
 
             <div className="space-y-8">
-              {BUSINESS_INFO.showrooms.map((showroom, index) => (
+              {BUSINESS_INFO.showrooms.map((showroom) => (
                 <div
                   key={showroom.id}
                   className="bg-white p-6 rounded-2xl border border-navy/10 shadow-sm"
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                     <h3 className="font-heading font-semibold text-lg text-navy">
-                      Showroom {index + 1} — {showroom.name}
+                      {showroom.name}
                     </h3>
                     <Link
                       href={showroom.slug}

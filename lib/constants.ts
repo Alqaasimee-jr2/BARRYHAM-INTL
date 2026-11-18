@@ -27,24 +27,6 @@ export const BUSINESS_INFO = {
   },
   showrooms: [
     {
-      id: "dopemu",
-      name: "Dopemu-Agege Main Showroom",
-      shortName: "Dopemu Showroom",
-      slug: "/dopemu-showroom",
-      streetAddress:
-        "Block B, Suite 3, Association Plaza, Cement Bus Stop, Lagos-Abeokuta Express Way, Dopemu",
-      locality: "Agege",
-      region: "Lagos",
-      country: "NG",
-      fullAddress:
-        "Block B, Suite 3, Association Plaza, Cement Bus Stop, Lagos-Abeokuta Express Way, Dopemu-Agege, Lagos.",
-      mapEmbedUrl:
-        "https://maps.google.com/maps?q=6.6072661,3.318393&z=17&output=embed",
-      directionsUrl:
-        "https://www.google.com/maps/search/?api=1&query=Association+Plaza+Cement+Bus+Stop+Dopemu+Agege+Lagos",
-      landmarks: "Directly at Cement Bus Stop along Lagos-Abeokuta Expressway, Dopemu-Agege",
-    },
-    {
       id: "alimosho",
       name: "Alimosho / Igando Showroom & Office",
       shortName: "Alimosho Showroom",

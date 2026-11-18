@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title:
     "About Barryham International Limited | Authorised Sanitary, Plumbing & Electrical Supplier Lagos",
   description:
-    "Established in 2018 with showrooms in Dopemu-Agege and Alimosho, Lagos. Direct distributor for Grohe, Ideal Standard, Villeroy & Boch, Roca, Ariston, and Coleman CTIL across 30+ major Nigerian projects.",
+    "Established in 2018 with our showroom in Alimosho, Lagos. Direct distributor for Grohe, Ideal Standard, Villeroy & Boch, Roca, Ariston, and Coleman CTIL across 30+ major Nigerian projects.",
   alternates: {
     canonical: "https://barryham.site/about",
   },
@@ -29,7 +29,7 @@ export default function AboutPage() {
       <section className="py-16 px-6 lg:px-12 bg-navy text-white text-center">
         <div className="max-w-4xl mx-auto">
           <span className="font-ui text-xs font-semibold uppercase tracking-[0.25em] text-gold block mb-3">
-            Established 2018 • Dopemu-Agege &amp; Alimosho, Lagos
+            Established 2018 • Alimosho, Lagos
           </span>
           <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl mb-6">
             About Barryham International Limited

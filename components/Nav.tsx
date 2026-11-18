@@ -47,7 +47,6 @@ const SERVICE_DROPDOWN_LINKS = [
   { name: "All Services Overview", href: "/services" },
   { name: "Bulk Supply for Contractors", href: "/bulk-supply-contractors" },
   { name: "Delivery & Installation", href: "/delivery-installation" },
-  { name: "Dopemu Showroom (Agege)", href: "/dopemu-showroom" },
   { name: "Alimosho Showroom (LASU-Isheri)", href: "/alimosho-showroom" },
 ];
 
